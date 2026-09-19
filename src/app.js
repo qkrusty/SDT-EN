@@ -51,6 +51,24 @@
     }, { passive: true });
   })();
 
+  /* ---------- bod 3: fotky sa rozsvietia, keď prejdú stredom obrazovky ----------
+     Na myši to rieši :hover, toto je pre dotykové zariadenia. */
+  (function litOnScroll() {
+    var items = $$("[data-lit]");
+    if (!items.length || !("IntersectionObserver" in window)) return;
+    // na myši to rieši :hover — toto je len pre dotyk
+    if (!window.matchMedia("(hover: none)").matches) return;
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (en) {
+          en.target.classList.toggle("is-lit", en.isIntersecting);
+        });
+      },
+      { rootMargin: "-42% 0px -42% 0px" }
+    );
+    items.forEach(function (el) { io.observe(el); });
+  })();
+
   /* ---------- bod 2: čísla v „About us“ sa dopočítajú ---------- */
   (function counters() {
     var nums = $$("[data-count]");
@@ -294,6 +312,10 @@
 
     if (prev) prev.addEventListener("click", function () { go(i - 1); });
     if (next) next.addEventListener("click", function () { go(i + 1); });
+    // klik na vedľajšiu fotku ju vytiahne dopredu (bod 5)
+    slides.forEach(function (sl, n) {
+      sl.addEventListener("click", function () { if (n !== i) go(n); });
+    });
     dots.forEach(function (d, n) { d.addEventListener("click", function () { go(n); }); });
     box.addEventListener("scroll", function () {
       if (ticking) return;

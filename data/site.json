@@ -3,7 +3,7 @@
   "nameSk": "Slovenské divadlo tanca",
   "tagline": "Pushing the boundaries of dance and theatre",
   "description": "Modern dance company based in Slovakia. Explore our repertoire, meet our dancers, and follow the latest performances.",
-  "url": "https://slovakdancetheatre.com",
+  "url": "https://sdt.sk",
   "social": {
     "facebook": "https://www.facebook.com/p/Slovensk%C3%A9-Divadlo-Tanca-61570987910309/",
     "instagram": "https://www.instagram.com/sdt_new/"
@@ -97,7 +97,15 @@
     "phoneHref": "+421902360707",
     "email": "info@sdt.sk",
     "_emailNote": "TODO — na sdt.sk je e-mail skrytý cez Cloudflare ochranu, doplň skutočnú adresu.",
-    "photo": "/assets/photos/contact-stage.webp"
+    "photo": "/assets/photos/contact-stage.webp",
+    "address": {
+      "full": "Pribinova 25, 811 09 Bratislava - Staré Mesto, Slovakia",
+      "lines": [
+        "Pribinova 25",
+        "811 09 Bratislava – Staré Mesto",
+        "Slovakia"
+      ]
+    }
   },
   "_dancersNote": "Bio prevzate z podstranok sdt.sk/dancers/* cez automaticky prepis - formulacie skontroluj oproti originalu. Fotky su zmensene na 300x300 a prekomprimovane (285 kB -> 88 kB za vsetkych 23).",
   "dancers": [

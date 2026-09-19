@@ -52,6 +52,7 @@ const ICON = {
   right: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
   plus: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>`,
   close: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>`,
+  play: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6L19 12 8 5.2Z" fill="currentColor"/></svg>`,
   cal: `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><rect x="3.5" y="5" width="17" height="15.5" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 9.6h17M8 3.4v3.4M16 3.4v3.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
 };
 
@@ -112,11 +113,66 @@ function contactSection() {
       </div>
     </div>
   </div>
+  ${mapBlock()}
   ${c.photo ? `<figure class="contact-photo marks" data-reveal>
     <span class="shot"><img src="${esc(c.photo)}" alt="The company on stage" width="1400" height="612" loading="lazy" decoding="async"></span>
     <figcaption>Slovak Dance Theatre — on stage</figcaption>
   </figure>` : ""}
 </section>`;
+}
+
+/* bod 12 — minimalistická mapka. Vlastná kresba, žiadne externé dlaždice:
+   nulové requesty, drží čiernobielu linku webu a načíta sa okamžite. */
+function mapBlock() {
+  const a = site.contact.address;
+  if (!a) return "";
+  const q = encodeURIComponent(a.full);
+  return `
+<div class="addr" data-reveal>
+  <div class="addr-text">
+    <p class="label">Address</p>
+    <p class="addr-lines">${a.lines.map((l) => esc(l)).join("<br>")}</p>
+    <a class="addr-link" href="https://www.google.com/maps/search/?api=1&amp;query=${q}" target="_blank" rel="noopener">
+      <span>Open in maps</span>${ICON.right}
+    </a>
+  </div>
+  <a class="addr-map" href="https://www.google.com/maps/search/?api=1&amp;query=${q}" target="_blank" rel="noopener" aria-label="${esc(a.full)} — open in maps">
+    <svg viewBox="0 0 800 440" role="img" aria-hidden="true">
+      <rect width="800" height="440" fill="#ffffff"/>
+      <g fill="#f1f1f2">
+        <rect x="-10" y="86" width="230" height="104"/>
+        <rect x="248" y="78" width="250" height="106"/>
+        <rect x="526" y="70" width="290" height="106"/>
+        <rect x="-10" y="222" width="230" height="86"/>
+        <rect x="248" y="214" width="250" height="84"/>
+        <rect x="526" y="206" width="290" height="82"/>
+      </g>
+      <path d="M0 330 L800 288 L800 440 L0 440 Z" fill="#e6e6e8"/>
+      <g stroke="#c9c9ce" stroke-width="1" opacity=".9">
+        <path d="M0 360 L800 318"/><path d="M0 392 L800 350"/><path d="M0 424 L800 382"/>
+      </g>
+      <g stroke="#111114" fill="none">
+        <path d="M0 208 L800 168" stroke-width="7"/>
+        <path d="M0 72 L800 34" stroke-width="3.5"/>
+        <path d="M232 60 L214 316" stroke-width="3"/>
+        <path d="M510 48 L492 304" stroke-width="3"/>
+        <path d="M676 300 L700 440" stroke-width="5"/>
+      </g>
+      <g font-family="Montserrat,Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="3" fill="#8d8d96">
+        <text x="24" y="196" transform="rotate(-2.9 24 196)">PRIBINOVA</text>
+        <text x="24" y="60" transform="rotate(-2.7 24 60)">LANDEREROVA</text>
+        <text x="52" y="398" transform="rotate(-3 52 398)" fill="#a8a8b0">DUNAJ</text>
+      </g>
+      <g class="pin" transform="translate(372 194)">
+        <circle class="pin-ring" r="9" fill="none" stroke="#e0102a" stroke-width="2"/>
+        <circle class="pin-ring is-2" r="9" fill="none" stroke="#e0102a" stroke-width="2"/>
+        <circle r="7.5" fill="#e0102a"/>
+        <circle r="2.6" fill="#ffffff"/>
+      </g>
+    </svg>
+    <span class="addr-badge">Pribinova 25</span>
+  </a>
+</div>`;
 }
 
 function footer() {
@@ -312,11 +368,11 @@ function pageHome() {
 <section class="section wrap" data-reveal>
   <div class="split">
     <div class="duo">
-      <figure class="duo-a" style="margin:0">
-        <img src="${esc(d.photo)}" alt="${esc(d.name)}" width="760" height="950" loading="lazy" decoding="async">
+      <figure class="duo-a" data-lit style="margin:0">
+        <img src="${esc(d.photo)}" alt="${esc(d.name)}" width="575" height="719" loading="lazy" decoding="async">
       </figure>
-      ${d.photo2 ? `<figure class="duo-b" style="margin:0">
-        <img src="${esc(d.photo2)}" alt="${esc(d.name)}" width="560" height="747" loading="lazy" decoding="async">
+      ${d.photo2 ? `<figure class="duo-b" data-lit style="margin:0">
+        <img src="${esc(d.photo2)}" alt="${esc(d.name)}" width="539" height="719" loading="lazy" decoding="async">
       </figure>` : ""}
     </div>
     <div>
@@ -395,7 +451,7 @@ function pageCalendar() {
       </a>
       <div class="cal-main">
         <a href="/repertoire/${esc(p.production)}/">${esc(prod ? prod.title : p.production)}</a>
-        <span class="cal-meta">${esc(p.venue)}, ${esc(p.city)}</span>
+        <span class="cal-meta">${esc(p.venue)}, ${esc(p.city)}${p.note ? ` <b class="cal-note">${esc(p.note)}</b>` : ""}</span>
       </div>
       <div class="cal-cta">
         ${sold
@@ -534,7 +590,7 @@ function pageProduction(p) {
     const sold = x.status === "soldout";
     return `<a class="hd-cell${sold ? " is-out" : ""}" href="${sold ? "/calendar/" : esc(x.ticketUrl)}"${sold ? "" : ' target="_blank" rel="noopener"'}>
       <span class="hd-city">${esc(x.city)}</span>
-      <span class="hd-venue">${esc(x.venue)}</span>
+      <span class="hd-venue">${x.note ? esc(x.note) : esc(x.venue)}</span>
       <span class="hd-when">
         <b>${DAYS[dt.getUTCDay()].toUpperCase()} ${dt.getUTCDate()} ${MONTHS[dt.getUTCMonth()].slice(0, 3).toUpperCase()}</b>
         <i>${sold ? "Sold out" : esc(x.time)}</i>
@@ -543,8 +599,8 @@ function pageProduction(p) {
   };
 
   /* rozklikávacia karta — funguje aj bez JS */
-  const panel = (title, rows, open) =>
-    `<details class="panel"${open ? " open" : ""}>
+  const panel = (title, rows) =>
+    `<details class="panel">
       <summary><span>${esc(title)}</span><i aria-hidden="true"></i></summary>
       <div class="panel-body">
         <dl class="credit-list">
@@ -610,10 +666,20 @@ function pageProduction(p) {
   </div>
 </section>
 
+${p.trailer
+  ? `<section class="section tight wrap" data-reveal>
+  <a class="trailer" href="${esc(p.trailer)}" target="_blank" rel="noopener" aria-label="Watch the trailer for ${esc(p.title)}">
+    <img src="${esc(p.heroImage || p.poster)}" alt="" width="1400" height="788" loading="lazy" decoding="async">
+    <span class="trailer-veil"></span>
+    <span class="trailer-play">${ICON.play}</span>
+    <span class="trailer-cap"><b>Watch the trailer</b><i>${esc(p.title)}</i></span>
+  </a>
+</section>`
+  : ""}
+
 ${hasQuotes
   ? `<section class="press band" data-reveal>
   <div class="wrap">
-    <p class="label press-label">Press</p>
     <div class="press-grid">
       ${p.quotes
         .map(
@@ -632,8 +698,8 @@ ${hasQuotes
 ${p.cast || p.production
   ? `<section class="section wrap" data-reveal>
   <div class="panels">
-    ${p.cast ? panel("Obsadenie", p.cast, true) : ""}
-    ${p.production ? panel("Production", p.production, false) : ""}
+    ${p.cast ? panel("Cast", p.cast) : ""}
+    ${p.production ? panel("Production", p.production) : ""}
   </div>
 </section>`
   : ""}

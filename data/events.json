@@ -23,7 +23,7 @@
       "premiere": "2026 — JANART THEATRE, Bratislava",
       "performers": 20,
       "duration": "80 minutes",
-      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero",
+      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero?imedium=search",
       "trailer": null,
       "quotes": [],
       "heroImage": "/assets/photos/swanlake-wide.webp"
@@ -309,7 +309,7 @@
       "premiere": "24 October 2008 — Heineken Tower Stage, Bratislava",
       "performers": 14,
       "duration": "60 minutes",
-      "ticketUrl": "https://www.ticketportal.sk/",
+      "ticketUrl": "https://www.ticketportal.sk/event/VECER-SVETOVEHO-MODERNEHO-BALETU",
       "trailer": "https://www.youtube.com/watch?v=Qi-9Cu4Agqk",
       "quotes": [
         {
@@ -376,58 +376,22 @@
   ],
   "performances": [
     {
-      "production": "swan-lake",
-      "date": "2026-11-14",
+      "production": "amadeus",
+      "date": "2026-09-26",
       "time": "19:00",
+      "city": "Trnava",
+      "venue": "Kultúrne centrum",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/"
+    },
+    {
+      "production": "the-firebird",
+      "date": "2026-10-03",
+      "time": "18:30",
       "city": "Bratislava",
       "venue": "JANART Theatre",
       "status": "onsale",
-      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero"
-    },
-    {
-      "production": "swan-lake",
-      "date": "2026-11-15",
-      "time": "19:00",
-      "city": "Bratislava",
-      "venue": "JANART Theatre",
-      "status": "onsale",
-      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero"
-    },
-    {
-      "production": "swan-lake",
-      "date": "2026-11-21",
-      "time": "19:00",
-      "city": "Bratislava",
-      "venue": "JANART Theatre",
-      "status": "soldout",
-      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero"
-    },
-    {
-      "production": "swan-lake",
-      "date": "2026-12-05",
-      "time": "19:00",
-      "city": "Košice",
-      "venue": "Štátne divadlo",
-      "status": "onsale",
-      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero"
-    },
-    {
-      "production": "swan-lake",
-      "date": "2027-01-23",
-      "time": "19:00",
-      "city": "Bratislava",
-      "venue": "JANART Theatre",
-      "status": "onsale",
-      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero"
-    },
-    {
-      "production": "swan-lake",
-      "date": "2027-03-13",
-      "time": "19:00",
-      "city": "Vienna",
-      "venue": "Museumsquartier",
-      "status": "onsale",
-      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero"
+      "ticketUrl": "https://www.ticketportal.sk/event/VECER-SVETOVEHO-MODERNEHO-BALETU"
     },
     {
       "production": "the-hunchback-of-notre-dame",
@@ -448,56 +412,11 @@
       "ticketUrl": "https://www.ticketportal.sk/"
     },
     {
-      "production": "the-hunchback-of-notre-dame",
-      "date": "2026-11-28",
-      "time": "19:00",
-      "city": "Trnava",
-      "venue": "Kultúrne centrum",
-      "status": "onsale",
-      "ticketUrl": "https://www.ticketportal.sk/"
-    },
-    {
-      "production": "the-hunchback-of-notre-dame",
-      "date": "2027-02-11",
-      "time": "19:00",
-      "city": "Žilina",
-      "venue": "Dom umenia Fatra",
-      "status": "onsale",
-      "ticketUrl": "https://www.ticketportal.sk/"
-    },
-    {
       "production": "carmen",
       "date": "2026-10-17",
       "time": "19:00",
       "city": "Bratislava",
       "venue": "JANART Theatre",
-      "status": "onsale",
-      "ticketUrl": "https://www.ticketportal.sk/"
-    },
-    {
-      "production": "carmen",
-      "date": "2026-12-12",
-      "time": "19:00",
-      "city": "Prague",
-      "venue": "Hybernia",
-      "status": "onsale",
-      "ticketUrl": "https://www.ticketportal.sk/"
-    },
-    {
-      "production": "carmen",
-      "date": "2027-02-27",
-      "time": "19:00",
-      "city": "Banská Bystrica",
-      "venue": "Divadlo J. G. Tajovského",
-      "status": "onsale",
-      "ticketUrl": "https://www.ticketportal.sk/"
-    },
-    {
-      "production": "amadeus",
-      "date": "2026-09-26",
-      "time": "19:00",
-      "city": "Trnava",
-      "venue": "Kultúrne centrum",
       "status": "onsale",
       "ticketUrl": "https://www.ticketportal.sk/"
     },
@@ -511,6 +430,62 @@
       "ticketUrl": "https://www.ticketportal.sk/"
     },
     {
+      "production": "swan-lake",
+      "date": "2026-11-14",
+      "time": "18:30",
+      "city": "Bratislava",
+      "venue": "JANART Theatre",
+      "status": "onsale",
+      "note": "1. premiéra",
+      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero?imedium=search"
+    },
+    {
+      "production": "swan-lake",
+      "date": "2026-11-15",
+      "time": "17:00",
+      "city": "Bratislava",
+      "venue": "JANART Theatre",
+      "status": "onsale",
+      "note": "2. premiéra",
+      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero?imedium=search"
+    },
+    {
+      "production": "the-hunchback-of-notre-dame",
+      "date": "2026-11-28",
+      "time": "19:00",
+      "city": "Trnava",
+      "venue": "Kultúrne centrum",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/"
+    },
+    {
+      "production": "swan-lake",
+      "date": "2026-12-11",
+      "time": "18:30",
+      "city": "Bratislava",
+      "venue": "JANART Theatre",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero?imedium=search"
+    },
+    {
+      "production": "swan-lake",
+      "date": "2026-12-12",
+      "time": "18:30",
+      "city": "Bratislava",
+      "venue": "JANART Theatre",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero?imedium=search"
+    },
+    {
+      "production": "carmen",
+      "date": "2026-12-12",
+      "time": "19:00",
+      "city": "Prague",
+      "venue": "Hybernia",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/"
+    },
+    {
       "production": "amadeus",
       "date": "2027-01-16",
       "time": "19:00",
@@ -520,20 +495,38 @@
       "ticketUrl": "https://www.ticketportal.sk/"
     },
     {
-      "production": "the-firebird",
-      "date": "2026-10-24",
-      "time": "19:00",
+      "production": "swan-lake",
+      "date": "2027-01-22",
+      "time": "18:30",
       "city": "Bratislava",
       "venue": "JANART Theatre",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero?imedium=search"
+    },
+    {
+      "production": "swan-lake",
+      "date": "2027-01-23",
+      "time": "18:30",
+      "city": "Bratislava",
+      "venue": "JANART Theatre",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero?imedium=search"
+    },
+    {
+      "production": "the-hunchback-of-notre-dame",
+      "date": "2027-02-11",
+      "time": "19:00",
+      "city": "Žilina",
+      "venue": "Dom umenia Fatra",
       "status": "onsale",
       "ticketUrl": "https://www.ticketportal.sk/"
     },
     {
-      "production": "the-firebird",
-      "date": "2027-03-27",
+      "production": "carmen",
+      "date": "2027-02-27",
       "time": "19:00",
-      "city": "Košice",
-      "venue": "Štátne divadlo",
+      "city": "Banská Bystrica",
+      "venue": "Divadlo J. G. Tajovského",
       "status": "onsale",
       "ticketUrl": "https://www.ticketportal.sk/"
     }
