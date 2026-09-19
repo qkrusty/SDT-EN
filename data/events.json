@@ -1,0 +1,541 @@
+{
+  "_comment": "Jediný zdroj pravdy pre tituly a termíny. Z tohto súboru sa generujú plagáty na úvodnej stránke, stránka Calendar aj detaily titulov. Termíny sú zatiaľ vymyslené — nahraď ich reálnymi.",
+  "productions": [
+    {
+      "slug": "swan-lake",
+      "title": "Swan Lake",
+      "titleSk": "Labutie jazero",
+      "tagline": "The most anticipated premiere of the year",
+      "featured": true,
+      "premiereBadge": "Premiere",
+      "poster": "/assets/posters/swan-lake.webp",
+      "posterAlt": "Swan Lake — official poster",
+      "blurb": "The most anticipated premiere of the year. A modern version of the most famous ballet of all time.",
+      "description": [
+        "A modern version of the most famous ballet of all time. Ján Ďurovčík strips Tchaikovsky's score back to what has always been underneath it — a story about the impossible distance between what we are and what we are asked to become.",
+        "The lake is not a place in this production. It is a state the dancers move through, built from water, light and a company pushed to the edge of what the body can hold."
+      ],
+      "credits": {
+        "Choreography and Direction": "Ján Ďurovčík",
+        "Music": "P. I. Tchaikovsky",
+        "Costumes": "Lukáš Krnáč"
+      },
+      "premiere": "2026 — JANART THEATRE, Bratislava",
+      "performers": 20,
+      "duration": "80 minutes",
+      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero",
+      "trailer": null,
+      "quotes": [],
+      "heroImage": "/assets/photos/swanlake-wide.webp"
+    },
+    {
+      "slug": "the-hunchback-of-notre-dame",
+      "title": "The Hunchback of Notre Dame",
+      "titleSk": "Zvonár u Matky Božej",
+      "tagline": "Victor Hugo in a Paris of 2050",
+      "featured": true,
+      "premiereBadge": null,
+      "poster": "/assets/posters/hunchback.webp",
+      "posterAlt": "The Hunchback of Notre Dame — official poster",
+      "blurb": "A daring reimagining of Victor Hugo's masterpiece, set in a near-future Paris of 2050.",
+      "description": [
+        "The Slovak Dance Theatre's latest creation is a daring reimagining of Victor Hugo's masterpiece, set in a near-future Paris of 2050. Bold costumes by Lukáš Krnáč and a futuristic vision of Notre Dame frame a story of outcasts and passion, led by Esmeralda's radiance.",
+        "Enriched by Ján Ďurovčík's striking addition — the alter ego of Quasimodo's mother, guiding the drama at decisive moments."
+      ],
+      "credits": {
+        "Choreography and Direction": "Ján Ďurovčík",
+        "Music": "Henrich Leško",
+        "Costumes": "Lukáš Krnáč"
+      },
+      "premiere": "27 March 2025 — JANART THEATRE, Bratislava",
+      "performers": 19,
+      "duration": "75 minutes",
+      "ticketUrl": "https://www.ticketportal.sk/",
+      "trailer": "https://www.youtube.com/watch?v=ACKR4gTB_g0",
+      "quotes": [
+        {
+          "stars": 5,
+          "text": "Magnificent",
+          "source": "TV Markíza"
+        },
+        {
+          "stars": 5,
+          "text": "The audience went wild",
+          "source": "Nový Čas"
+        },
+        {
+          "stars": 5,
+          "text": "Triumphant!",
+          "source": "Topky.sk"
+        }
+      ],
+      "heroImage": "/assets/photos/hunchback-wide.webp",
+      "cast": [
+        [
+          "Quasimodo (Zvonár)",
+          [
+            "Miroslav Figura",
+            "Lorenzo Alba"
+          ]
+        ],
+        [
+          "Esmeralda (Cigánka)",
+          [
+            "Tamara Semanová",
+            "Giulia Fattorini",
+            "Kristína Puterková"
+          ]
+        ],
+        [
+          "Frollo (Parížsky biskup)",
+          [
+            "Matej Huťka",
+            "Dominik Dolník"
+          ]
+        ],
+        [
+          "Kapitán (Phoebus)",
+          [
+            "Raffaele Zarrella",
+            "Gennaro Desiderio"
+          ]
+        ],
+        [
+          "Zvonárova matka",
+          [
+            "Nataša Okrucká",
+            "Millie Thompson",
+            "Sophia Stašková"
+          ]
+        ],
+        [
+          "Vojaci",
+          [
+            "Matej Huťka",
+            "Raffaele Zarrella",
+            "Miroslav Figura",
+            "Lorenzo Alba",
+            "Dominik Dolník",
+            "Gennaro Desiderio",
+            "Samuel Bojnanský",
+            "Dávid Bosák",
+            "Filip Tóth",
+            "Giulia Fattorini",
+            "Tamara Semanová",
+            "Maša Machatsová",
+            "Alica Szilagyiová",
+            "Kristína Puterková"
+          ]
+        ],
+        [
+          "Company",
+          [
+            "Emma Perez",
+            "Millie Thompson",
+            "Giulia Fattorini",
+            "Mercedes Fernández González",
+            "Alica Szilagyiová",
+            "Sophia Stašková",
+            "Nataša Okrucká",
+            "Tamara Semanová",
+            "Nina Ďuríková",
+            "Katarína Kaštierová",
+            "Maša Machatsová",
+            "Sofia Bodnárová",
+            "Kristína Puterková",
+            "Matej Huťka",
+            "Raffaele Zarrella",
+            "Miroslav Figura",
+            "Lorenzo Alba",
+            "Dominik Dolník",
+            "Gennaro Desiderio",
+            "Samuel Bojnanský",
+            "Dávid Bosák",
+            "Filip Tóth"
+          ]
+        ]
+      ],
+      "production": [
+        [
+          "Asistentka choreografie",
+          [
+            "Marianna Paulíková"
+          ]
+        ],
+        [
+          "Produkcia",
+          [
+            "Ján Ševčík"
+          ]
+        ],
+        [
+          "Vedúca garderóby",
+          [
+            "Mária Gašparová"
+          ]
+        ],
+        [
+          "Garderóba",
+          [
+            "Mária Gašparová",
+            "Lucia Kvašňovská",
+            "Tereza Kubincová"
+          ]
+        ],
+        [
+          "Masky",
+          [
+            "Martina Gáborová",
+            "Mária Gašparová"
+          ]
+        ],
+        [
+          "Vedúci techniky",
+          [
+            "Lukáš Jenča"
+          ]
+        ],
+        [
+          "Javisková technika",
+          [
+            "Michal Svitok",
+            "Tomáš Greguš",
+            "Lukáš Herteľ",
+            "Tomáš Daubner"
+          ]
+        ],
+        [
+          "Svetlá",
+          [
+            "Matúš Gazdík",
+            "Ján Ďurovčík"
+          ]
+        ],
+        [
+          "LED dizajn",
+          [
+            "Raffaele Zarrella",
+            "Matúš Gazdík"
+          ]
+        ],
+        [
+          "Zvuk",
+          [
+            "Michal Kujan"
+          ]
+        ],
+        [
+          "Rekvizity",
+          [
+            "ND Košice",
+            "Mária Gašparová",
+            "Lukáš Krnáč"
+          ]
+        ]
+      ],
+      "gallery": [
+        "/assets/shows/hunchback/01.webp",
+        "/assets/shows/hunchback/02.webp",
+        "/assets/shows/hunchback/03.webp",
+        "/assets/shows/hunchback/04.webp",
+        "/assets/shows/hunchback/05.webp",
+        "/assets/shows/hunchback/06.webp",
+        "/assets/shows/hunchback/07.webp",
+        "/assets/shows/hunchback/08.webp"
+      ]
+    },
+    {
+      "slug": "carmen",
+      "title": "Carmen",
+      "titleSk": "Carmen",
+      "tagline": "Toured from Tokyo to Mexico City",
+      "featured": true,
+      "premiereBadge": null,
+      "poster": "/assets/posters/carmen.webp",
+      "posterAlt": "Carmen — official poster",
+      "blurb": "Bizet and Shchedrin, libertine against conventional, Spanish against Slavonic.",
+      "description": [
+        "The narrative centres on an unrestrained Andalusian gypsy woman and Don José. Drawing from Georges Bizet and Rodion Shchedrin's compositions, this production — written and helmed by Ján Ďurovčík — merges libertine with conventional elements, Spanish with Slavonic influences, incorporating folklore aspects in the Escamillo character.",
+        "The piece alternates rapid-fire sequences with tender, quiet passages. This Slovak Dance Theatre adaptation has toured extensively across Tokyo, London, Toronto, Ottawa, Beijing, Rome, Madrid, Amsterdam, Mexico City, Québec, Helsinki and Graz."
+      ],
+      "credits": {
+        "Choreography and Direction": "Ján Ďurovčík",
+        "Music": "Georges Bizet / Rodion Shchedrin",
+        "Costumes": "Andrej Baranik"
+      },
+      "premiere": "26 March 2010 — Heineken Tower Stage, Bratislava",
+      "performers": 12,
+      "duration": "75 minutes",
+      "ticketUrl": "https://www.ticketportal.sk/",
+      "trailer": "https://www.youtube.com/watch?v=RfXa1YWGXKE",
+      "quotes": [
+        {
+          "stars": 5,
+          "text": "Feast for the eyes, brilliant choreography",
+          "source": "Helsingin Sanomat, Finland"
+        },
+        {
+          "stars": 5,
+          "text": "Amazing",
+          "source": "New York Times, USA"
+        },
+        {
+          "stars": 5,
+          "text": "Absolute bomb of emotions!",
+          "source": "Balet.com.hr, Croatia"
+        }
+      ],
+      "heroImage": "/assets/photos/carmen-wide.webp"
+    },
+    {
+      "slug": "the-firebird",
+      "title": "The Firebird",
+      "titleSk": "Vták Ohnivák",
+      "tagline": "The world tour that put Slovak dance on the map",
+      "featured": true,
+      "premiereBadge": null,
+      "poster": "/assets/posters/firebird.webp",
+      "posterAlt": "The Firebird — official poster",
+      "blurb": "Stravinsky reimagined — a village closed to new ideas, transformed by one free spirit.",
+      "description": [
+        "A modern reinterpretation of Stravinsky's fairytale about a prince entering an enchanted land. In Ján Ďurovčík's powerful vision, a fearful village closed to new ideas is transformed by the arrival of a free-spirited young man whose love inspires both villagers and audience to think, dream and act freely.",
+        "Blending Slavic influences into a unified artistic language, Ďurovčík creates a work of total theatre. A striking symbol of constraint — dancers performing in rubber boots — becomes both a metaphor for limited thought and a demanding technical challenge for the company's finest interpreters."
+      ],
+      "credits": {
+        "Choreography and Direction": "Ján Ďurovčík",
+        "Music": "Igor Stravinsky",
+        "Costumes": "Alexandra Grusková"
+      },
+      "premiere": "24 October 2008 — Heineken Tower Stage, Bratislava",
+      "performers": 14,
+      "duration": "60 minutes",
+      "ticketUrl": "https://www.ticketportal.sk/",
+      "trailer": "https://www.youtube.com/watch?v=Qi-9Cu4Agqk",
+      "quotes": [
+        {
+          "stars": 5,
+          "text": "It is amazing to experience the passion of these dancers up close!",
+          "source": "Londondance, London"
+        },
+        {
+          "stars": 5,
+          "text": "The lead role performer is one of the finest soloists I have ever seen",
+          "source": "Vanessa Threapleton, BBC"
+        },
+        {
+          "stars": 5,
+          "text": "Timeless",
+          "source": "De Echo, Amsterdam"
+        }
+      ],
+      "heroImage": "/assets/photos/firebird-wide.webp"
+    },
+    {
+      "slug": "amadeus",
+      "title": "Amadeus",
+      "titleSk": "Amadeus",
+      "tagline": "Mozart, in laughter and in tears",
+      "featured": true,
+      "premiereBadge": null,
+      "poster": "/assets/posters/amadeus.webp",
+      "posterAlt": "Amadeus — official poster",
+      "blurb": "Modern ballet meets Mozart — the choreographer's vision of an extraordinary genius.",
+      "description": [
+        "AMADEUS blends the beauty of modern ballet with the magnificent tones of classical music, presenting the choreographer's vision of the life and work of the extraordinary genius Wolfgang Amadeus Mozart.",
+        "The ballet brings Mozart's story to life, resonating in the present day and moving audiences to both laughter and tears."
+      ],
+      "credits": {
+        "Choreography and Direction": "Ján Ďurovčík",
+        "Music": "Wolfgang Amadeus Mozart",
+        "Costumes": "Lukáš Krnáč"
+      },
+      "premiere": "29 February 2024 — Cultural Centre, Trnava",
+      "performers": 12,
+      "duration": "65 minutes",
+      "ticketUrl": "https://www.ticketportal.sk/",
+      "trailer": "https://www.youtube.com/watch?v=wJberSLwGM0",
+      "quotes": [
+        {
+          "stars": 5,
+          "text": "Ďurovčík's Amadeus provoked madness!",
+          "source": "Topky.sk"
+        },
+        {
+          "stars": 5,
+          "text": "Breath-taking",
+          "source": "Nový Čas"
+        },
+        {
+          "stars": 5,
+          "text": "Standing ovation!",
+          "source": "Topky.sk"
+        }
+      ],
+      "heroImage": "/assets/photos/amadeus-wide.webp"
+    }
+  ],
+  "performances": [
+    {
+      "production": "swan-lake",
+      "date": "2026-11-14",
+      "time": "19:00",
+      "city": "Bratislava",
+      "venue": "JANART Theatre",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero"
+    },
+    {
+      "production": "swan-lake",
+      "date": "2026-11-15",
+      "time": "19:00",
+      "city": "Bratislava",
+      "venue": "JANART Theatre",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero"
+    },
+    {
+      "production": "swan-lake",
+      "date": "2026-11-21",
+      "time": "19:00",
+      "city": "Bratislava",
+      "venue": "JANART Theatre",
+      "status": "soldout",
+      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero"
+    },
+    {
+      "production": "swan-lake",
+      "date": "2026-12-05",
+      "time": "19:00",
+      "city": "Košice",
+      "venue": "Štátne divadlo",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero"
+    },
+    {
+      "production": "swan-lake",
+      "date": "2027-01-23",
+      "time": "19:00",
+      "city": "Bratislava",
+      "venue": "JANART Theatre",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero"
+    },
+    {
+      "production": "swan-lake",
+      "date": "2027-03-13",
+      "time": "19:00",
+      "city": "Vienna",
+      "venue": "Museumsquartier",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/event/Labutie-jazero"
+    },
+    {
+      "production": "the-hunchback-of-notre-dame",
+      "date": "2026-10-03",
+      "time": "19:00",
+      "city": "Bratislava",
+      "venue": "JANART Theatre",
+      "status": "soldout",
+      "ticketUrl": "https://www.ticketportal.sk/"
+    },
+    {
+      "production": "the-hunchback-of-notre-dame",
+      "date": "2026-10-04",
+      "time": "18:00",
+      "city": "Bratislava",
+      "venue": "JANART Theatre",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/"
+    },
+    {
+      "production": "the-hunchback-of-notre-dame",
+      "date": "2026-11-28",
+      "time": "19:00",
+      "city": "Trnava",
+      "venue": "Kultúrne centrum",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/"
+    },
+    {
+      "production": "the-hunchback-of-notre-dame",
+      "date": "2027-02-11",
+      "time": "19:00",
+      "city": "Žilina",
+      "venue": "Dom umenia Fatra",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/"
+    },
+    {
+      "production": "carmen",
+      "date": "2026-10-17",
+      "time": "19:00",
+      "city": "Bratislava",
+      "venue": "JANART Theatre",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/"
+    },
+    {
+      "production": "carmen",
+      "date": "2026-12-12",
+      "time": "19:00",
+      "city": "Prague",
+      "venue": "Hybernia",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/"
+    },
+    {
+      "production": "carmen",
+      "date": "2027-02-27",
+      "time": "19:00",
+      "city": "Banská Bystrica",
+      "venue": "Divadlo J. G. Tajovského",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/"
+    },
+    {
+      "production": "amadeus",
+      "date": "2026-09-26",
+      "time": "19:00",
+      "city": "Trnava",
+      "venue": "Kultúrne centrum",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/"
+    },
+    {
+      "production": "amadeus",
+      "date": "2026-11-07",
+      "time": "19:00",
+      "city": "Bratislava",
+      "venue": "JANART Theatre",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/"
+    },
+    {
+      "production": "amadeus",
+      "date": "2027-01-16",
+      "time": "19:00",
+      "city": "Nitra",
+      "venue": "Divadlo A. Bagara",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/"
+    },
+    {
+      "production": "the-firebird",
+      "date": "2026-10-24",
+      "time": "19:00",
+      "city": "Bratislava",
+      "venue": "JANART Theatre",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/"
+    },
+    {
+      "production": "the-firebird",
+      "date": "2027-03-27",
+      "time": "19:00",
+      "city": "Košice",
+      "venue": "Štátne divadlo",
+      "status": "onsale",
+      "ticketUrl": "https://www.ticketportal.sk/"
+    }
+  ]
+}

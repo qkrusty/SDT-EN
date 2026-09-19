@@ -1,0 +1,10 @@
+{
+  "name": "sdt-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "preview": "PREVIEW=1 node build.mjs",
+    "serve": "node build.mjs && npx --yes serve dist"
+  }
+}
