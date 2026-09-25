@@ -319,8 +319,10 @@ h3.display{font-size:clamp(21px,2.6vw,29px)}
   transition:outline-offset .5s var(--ease),outline-color .5s var(--ease);
 }
 /* bod 1 — prostredný titul je väčší a rámček pulzuje */
-.arc .card:nth-child(3) .card-art{outline-color:rgba(176,176,186,.98);outline-width:1.5px;animation:frame-pulse 2.8s var(--ease) infinite}
-.arc .card:nth-child(3)::after{
+.arc.n4{grid-template-columns:1fr 1.26fr 1.26fr 1fr}
+.arc.n3{grid-template-columns:1fr 1.3fr 1fr}
+.arc .card.is-hero .card-art{outline-color:rgba(176,176,186,.98);outline-width:1.5px;animation:frame-pulse 2.8s var(--ease) infinite}
+.arc .card.is-hero::after{
   content:"";position:absolute;inset:-16px;border:1.5px solid rgba(158,158,168,.95);pointer-events:none;z-index:1;
   animation:ring-pulse 2.8s var(--ease) infinite;
 }
@@ -457,8 +459,14 @@ h3.display{font-size:clamp(21px,2.6vw,29px)}
   outline:8px solid var(--paper);
 }
 .duo-b img{aspect-ratio:3/4;object-fit:cover}
+.duo.is-wide{padding-right:0;padding-bottom:clamp(120px,16vw,210px)}
+.duo.is-wide .duo-a{width:100%}
+.duo.is-wide .duo-a img{aspect-ratio:780/470}
+.duo.is-wide .duo-b{width:40%;right:-4%}
 @media (max-width:520px){
   .duo{padding-bottom:26px;padding-right:18px}
+  .duo.is-wide{padding-bottom:110px;padding-right:0}
+  .duo.is-wide .duo-b{width:44%;right:0}
   .duo-a{width:88%}
   .duo-b{width:52%;outline-width:6px}
 }
@@ -521,11 +529,19 @@ h3.display{font-size:clamp(21px,2.6vw,29px)}
 /* bod 5 — všetkých päť titulov hneď hore, vedľa seba na jednu obrazovku */
 .rep-top{background:var(--dark);padding-block:clamp(26px,3.4vw,46px) clamp(30px,4vw,54px)}
 .rep-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(12px,1.7vw,26px)}
+.rep-strip.n4{grid-template-columns:repeat(4,1fr);max-width:1060px;margin-inline:auto}
+.rep-strip.n3{grid-template-columns:repeat(3,1fr);max-width:820px;margin-inline:auto}
+.rep-label{color:rgba(244,244,242,.55);margin-bottom:clamp(16px,2vw,24px);text-align:center}
+.archive-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,210px));gap:clamp(16px,2vw,28px)}
+.archive-strip .card-art img{filter:grayscale(1) contrast(1.05);transition:filter .7s var(--ease),transform 1s var(--ease)}
+.archive-strip .card:hover .card-art img{filter:none}
+.archive-strip .card-cap h3{font-size:17px}
 .rep-strip .card-art{outline-color:rgba(132,132,142,.6);outline-offset:6px}
 .rep-strip .card:hover .card-art{outline-color:var(--on-dark)}
 @media (max-width:820px){
   .rep-strip{grid-template-columns:repeat(2,1fr);gap:clamp(16px,4vw,26px)}
-  .rep-strip .card:nth-child(5){grid-column:1/-1;max-width:50%;margin-inline:auto}
+  .rep-strip:not(.n4) .card:nth-child(5){grid-column:1/-1;max-width:50%;margin-inline:auto}
+  .archive-strip{grid-template-columns:repeat(2,1fr)}
 }
 
 /* ---------- kalendár ---------- */
@@ -1121,16 +1137,47 @@ h3.display{font-size:clamp(21px,2.6vw,29px)}
   font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:8px 14px;
 }
 /* pulzujúci bod */
-.pin-ring{transform-origin:center;animation:pin-pulse 2.6s var(--ease) infinite}
-.pin-ring.is-2{animation-delay:1.3s}
+.pin-ring,.pin-core{transform-box:fill-box;transform-origin:center}
+.pin-ring{animation:pin-pulse 2.4s cubic-bezier(.2,.6,.3,1) infinite;opacity:0}
+.pin-ring.is-2{animation-delay:1.2s}
+.pin-core{animation:pin-beat 2.4s ease-in-out infinite}
+@keyframes pin-beat{0%,100%{transform:scale(1)}12%{transform:scale(1.18)}24%{transform:scale(1)}}
 @keyframes pin-pulse{
-  0%{transform:scale(.6);opacity:.9}
-  70%{transform:scale(3.1);opacity:0}
-  100%{transform:scale(3.1);opacity:0}
+  0%{transform:scale(.8);opacity:.85;stroke-width:2.4}
+  80%{transform:scale(3.4);opacity:0;stroke-width:.6}
+  100%{transform:scale(3.4);opacity:0}
 }
 @media (max-width:760px){
   .addr{grid-template-columns:1fr;gap:22px}
 }
 @media (prefers-reduced-motion:reduce){
-  .pin-ring,.trailer-play::before,.btn-dark.btn-big::before{animation:none}
+  .pin-ring,.pin-core,.trailer-play::before,.btn-dark.btn-big::before{animation:none}
 }
+
+/* ---------- prepínač jazyka SK | EN ---------- */
+.lang{display:flex;align-items:center;gap:9px;margin-right:4px}
+.lang a{
+  position:relative;font-size:11px;font-weight:700;letter-spacing:.16em;text-decoration:none;
+  color:var(--grey);padding:6px 2px;transition:color .25s;
+}
+.lang a:hover{color:var(--ink)}
+.lang a[aria-current="true"]{color:var(--ink)}
+.lang a[aria-current="true"]::after{
+  content:"";position:absolute;left:2px;right:2px;bottom:1px;height:1.5px;background:var(--ink);
+}
+.lang i{display:block;width:1px;height:13px;background:var(--line-2)}
+@media (max-width:1000px){
+  .lang{margin-right:6px}
+  .lang a{font-size:11.5px;padding:10px 3px}
+}
+
+
+/* ---------- pás miest v pätičke ---------- */
+.ticker.is-foot{position:relative;border-bottom:1px solid rgba(244,244,242,.12)}
+.ticker.is-foot .ticker-track{animation-duration:84s;animation-direction:reverse}
+
+/* ---------- kľúčový vizuál inscenácie ---------- */
+.kv{margin:0;position:relative;overflow:hidden;background:var(--dark)}
+.kv img{width:100%;height:auto;display:block;transition:transform 1.4s var(--ease)}
+.kv:hover img{transform:scale(1.02)}
+.kv.is-square{max-width:min(720px,100%);margin-inline:auto}

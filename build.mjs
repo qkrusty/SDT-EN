@@ -9,18 +9,61 @@ import path from "node:path";
 const ROOT = path.dirname(new URL(import.meta.url).pathname);
 const DIST = path.join(ROOT, "dist");
 
-const site = JSON.parse(await readFile(path.join(ROOT, "data/site.json"), "utf8"));
-const data = JSON.parse(await readFile(path.join(ROOT, "data/events.json"), "utf8"));
+const siteRaw = JSON.parse(await readFile(path.join(ROOT, "data/site.json"), "utf8"));
+const dataRaw = JSON.parse(await readFile(path.join(ROOT, "data/events.json"), "utf8"));
+const UI = JSON.parse(await readFile(path.join(ROOT, "data/ui.json"), "utf8"));
 
-const productions = data.productions;
-const bySlug = Object.fromEntries(productions.map((p) => [p.slug, p]));
+/* ---------- jazyky ----------
+   Každý text v dátach môže byť buď obyčajný reťazec, alebo { "sk": …, "en": … }.
+   Pred buildom jazyka sa celé dáta „rozbalia“ na daný jazyk, takže stránky
+   pracujú s obyčajnými reťazcami. Prvý jazyk v zozname ide na koreň domény. */
+const LANGS = siteRaw.languages || ["sk", "en"];
+const DEFAULT_LANG = LANGS[0];
+let lang = DEFAULT_LANG;
+
+const isLoc = (v) =>
+  v && typeof v === "object" && !Array.isArray(v) &&
+  Object.keys(v).length > 0 && Object.keys(v).every((k) => LANGS.includes(k));
+
+function loc(v) {
+  if (isLoc(v)) return loc(v[lang] ?? v[DEFAULT_LANG] ?? Object.values(v)[0]);
+  if (Array.isArray(v)) return v.map(loc);
+  if (v && typeof v === "object") {
+    const o = {};
+    for (const [k, x] of Object.entries(v)) o[k] = loc(x);
+    return o;
+  }
+  return v;
+}
+/** text rozhrania z data/ui.json */
+const t = (key) => {
+  const v = UI[key];
+  if (v === undefined) throw new Error(`Chýba text rozhrania: ${key}`);
+  return loc(v);
+};
+/** cesta s prefixom jazyka: /calendar/ → /en/calendar/ */
+const L = (p, lg = lang) => (lg === DEFAULT_LANG ? p : `/${lg}${p}`);
+
+let site, data, productions, bySlug;
+function useLang(lg) {
+  lang = lg;
+  site = loc(siteRaw);
+  data = loc(dataRaw);
+  productions = data.productions;
+  bySlug = Object.fromEntries(productions.map((p) => [p.slug, p]));
+}
+useLang(DEFAULT_LANG);
 
 /* ---------- helpers ---------- */
 const esc = (s = "") =>
   String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-const DAYS = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const cap = (x) => x.charAt(0).toUpperCase() + x.slice(1);
+/** „So 14. nov“ / „Sat 14 Nov“ */
+const fmtShort = (dt) =>
+  `${t("days")[dt.getUTCDay()]} ${dt.getUTCDate()}${t("dayDot")} ${t("monthsShort")[dt.getUTCMonth()]}`;
+/** „SO 14. NOV“ / „SAT 14 NOV“ */
+const fmtCaps = (dt) => fmtShort(dt).toUpperCase();
 
 function parseDate(iso) {
   const [y, m, d] = iso.split("-").map(Number);
@@ -29,7 +72,7 @@ function parseDate(iso) {
 const monthKey = (iso) => iso.slice(0, 7);
 const monthName = (key) => {
   const [y, m] = key.split("-").map(Number);
-  return `${MONTHS[m - 1]} ${y}`;
+  return `${cap(t("months")[m - 1])} ${y}`;
 };
 
 /** Termíny od dneška ďalej, zoradené. */
@@ -58,12 +101,12 @@ const ICON = {
 
 /* ---------- spoločné bloky ---------- */
 /* ---------- spoločné bloky ---------- */
-function ticker() {
+function ticker(extra = "") {
   const group = (hidden) =>
     `<div class="ticker-group"${hidden ? ' aria-hidden="true"' : ""}>${site.cities
       .map((c) => `<span>${esc(c)}</span>`)
       .join("")}</div>`;
-  return `<div class="ticker" data-ticker aria-label="Cities the company has played">
+  return `<div class="ticker${extra ? " " + extra : ""}"${extra ? ' aria-hidden="true"' : ` data-ticker aria-label="${esc(t("tickerLabel"))}"`}>
   <div class="ticker-track">${group(false)}${group(true)}</div>
 </div>`;
 }
@@ -76,23 +119,34 @@ function nav(current) {
   <div class="nav-in">
     <a class="nav-logo" href="/" aria-label="${esc(site.name)} — home">
       <img src="/assets/sdt-mark.svg" alt="SDT" width="62" height="26">
-      <span>Dance Theatre</span>
+      <span>${esc(t("logoSub"))}</span>
     </a>
     <div class="nav-links" id="nav-links">
-      ${link("/repertoire/", "Repertoire", "repertoire")}
-      ${link("/calendar/", "Calendar", "calendar")}
-      ${link("/dancers/", "Dancers", "dancers")}
-      ${link("/#contact", "Contact", "contact")}
+      ${link("/repertoire/", t("navRepertoire"), "repertoire")}
+      ${link("/calendar/", t("navCalendar"), "calendar")}
+      ${link("/dancers/", t("navDancers"), "dancers")}
+      ${link("/#contact", t("navContact"), "contact")}
     </div>
     <div class="nav-right">
+      ${langSwitch()}
       <div class="nav-social">
         <a href="${esc(site.social.facebook)}" target="_blank" rel="noopener" aria-label="Facebook">${ICON.facebook}</a>
         <a href="${esc(site.social.instagram)}" target="_blank" rel="noopener" aria-label="Instagram">${ICON.instagram}</a>
       </div>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">${ICON.menu}</button>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="${esc(t("menu"))}">${ICON.menu}</button>
     </div>
   </div>
 </nav>`;
+}
+
+/* SK | EN — cieľ odkazu je rovnaká stránka v druhom jazyku */
+function langSwitch() {
+  return `<div class="lang" role="navigation" aria-label="${esc(t("langSwitch"))}">
+        ${LANGS.map(
+          (lg) =>
+            `<a href="{{LANG:${lg}}}" hreflang="${lg}" lang="${lg}"${lg === lang ? ' aria-current="true"' : ""}>${lg.toUpperCase()}</a>`
+        ).join('<i aria-hidden="true"></i>')}
+      </div>`;
 }
 
 function contactSection() {
@@ -102,21 +156,22 @@ function contactSection() {
   <div class="split top">
     <div class="sechead" style="margin:0">
       <p class="label">${esc(c.eyebrow)}</p>
-      <h2 class="display">Performances, bookings, <em>partnerships</em></h2>
+      <h2 class="display">${c.heading}</h2>
       <p class="lede">${esc(c.body)}</p>
     </div>
     <div class="stack">
       <div class="contact-list">
-        <span><span class="k">Bookings</span> <b>${esc(c.person)}</b></span>
-        <a href="tel:${esc(c.phoneHref)}"><span class="k">Phone</span> <b>${esc(c.phone)}</b></a>
-        <a href="mailto:${esc(c.email)}"><span class="k">Email</span> <b>${esc(c.email)}</b></a>
+        <span><span class="k">${esc(t("bookings"))}</span> <b>${esc(c.person)}</b></span>
+        <a href="tel:${esc(c.phoneHref)}"><span class="k">${esc(t("phone"))}</span> <b>${esc(c.phone)}</b></a>
+        <a href="mailto:${esc(c.email)}"><span class="k">${esc(t("email"))}</span> <b>${esc(c.email)}</b></a>
+        ${c.email2 ? `<a href="mailto:${esc(c.email2)}"><span class="k">${esc(t("emailProd"))}</span> <b>${esc(c.email2)}</b></a>` : ""}
       </div>
     </div>
   </div>
   ${mapBlock()}
   ${c.photo ? `<figure class="contact-photo marks" data-reveal>
-    <span class="shot"><img src="${esc(c.photo)}" alt="The company on stage" width="1400" height="612" loading="lazy" decoding="async"></span>
-    <figcaption>Slovak Dance Theatre — on stage</figcaption>
+    <span class="shot"><img src="${esc(c.photo)}" alt="${esc(c.photoAlt)}" width="1400" height="612" loading="lazy" decoding="async"></span>
+    <figcaption>${esc(c.photoCap)}</figcaption>
   </figure>` : ""}
 </section>`;
 }
@@ -130,13 +185,13 @@ function mapBlock() {
   return `
 <div class="addr" data-reveal>
   <div class="addr-text">
-    <p class="label">Address</p>
+    <p class="label">${esc(t("address"))}</p>
     <p class="addr-lines">${a.lines.map((l) => esc(l)).join("<br>")}</p>
     <a class="addr-link" href="https://www.google.com/maps/search/?api=1&amp;query=${q}" target="_blank" rel="noopener">
-      <span>Open in maps</span>${ICON.right}
+      <span>${esc(t("openMaps"))}</span>${ICON.right}
     </a>
   </div>
-  <a class="addr-map" href="https://www.google.com/maps/search/?api=1&amp;query=${q}" target="_blank" rel="noopener" aria-label="${esc(a.full)} — open in maps">
+  <a class="addr-map" href="https://www.google.com/maps/search/?api=1&amp;query=${q}" target="_blank" rel="noopener" aria-label="${esc(a.full)} — ${esc(t("openMaps"))}">
     <svg viewBox="0 0 800 440" role="img" aria-hidden="true">
       <rect width="800" height="440" fill="#ffffff"/>
       <g fill="#f1f1f2">
@@ -161,13 +216,12 @@ function mapBlock() {
       <g font-family="Montserrat,Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="3" fill="#8d8d96">
         <text x="24" y="196" transform="rotate(-2.9 24 196)">PRIBINOVA</text>
         <text x="24" y="60" transform="rotate(-2.7 24 60)">LANDEREROVA</text>
-        <text x="52" y="398" transform="rotate(-3 52 398)" fill="#a8a8b0">DUNAJ</text>
+        <text x="52" y="398" transform="rotate(-3 52 398)" fill="#a8a8b0">${esc(t("mapRiver"))}</text>
       </g>
       <g class="pin" transform="translate(372 194)">
         <circle class="pin-ring" r="9" fill="none" stroke="#e0102a" stroke-width="2"/>
         <circle class="pin-ring is-2" r="9" fill="none" stroke="#e0102a" stroke-width="2"/>
-        <circle r="7.5" fill="#e0102a"/>
-        <circle r="2.6" fill="#ffffff"/>
+        <g class="pin-core"><circle r="7.5" fill="#e0102a"/><circle r="2.6" fill="#ffffff"/></g>
       </g>
     </svg>
     <span class="addr-badge">Pribinova 25</span>
@@ -178,11 +232,12 @@ function mapBlock() {
 function footer() {
   return `
 <footer class="foot" data-foot-invert>
+  ${ticker("is-foot")}
   <div class="foot-top">
     <a class="foot-logo" href="/" aria-label="${esc(site.nameSk)}">
       <span class="mark" role="img" aria-label="${esc(site.nameSk)}"></span>
     </a>
-    <p class="foot-copy">© ${new Date().getFullYear()} ${esc(site.nameSk)}. All rights reserved.</p>
+    <p class="foot-copy">© ${new Date().getFullYear()} ${esc(site.nameSk)}. ${esc(t("rights"))}</p>
   </div>
   <div class="foot-crop" data-spotlight aria-hidden="true">
     <span class="mark base"></span>
@@ -204,7 +259,7 @@ function popup() {
     <p>${esc(p.body)}</p>
     <a class="btn btn-dark btn-sm" href="${esc(p.url)}" target="_blank" rel="noopener" style="justify-self:start;margin-top:4px">${esc(p.cta)}</a>
   </div>
-  <button class="pop-close" type="button" aria-label="Close">${ICON.close}</button>
+  <button class="pop-close" type="button" aria-label="${esc(t("close"))}">${ICON.close}</button>
 </aside>`;
 }
 
@@ -214,8 +269,8 @@ function quotesBlock(quotes, id) {
   ${quotes
     .map(
       (q, i) => `<figure class="quote${i === 0 ? " is-on" : ""}" style="margin:0">
-    <div class="stars" aria-label="${q.stars} out of 5">${stars(q.stars)}</div>
-    <blockquote>“${esc(q.text)}”</blockquote>
+    <div class="stars" aria-label="${q.stars} ${esc(t("outOf5"))}">${stars(q.stars)}</div>
+    <blockquote>${t("qOpen")}${esc(q.text)}${t("qClose")}</blockquote>
     <cite>${esc(q.source)}</cite>
   </figure>`
     )
@@ -223,12 +278,12 @@ function quotesBlock(quotes, id) {
 </div>`;
 }
 
-function posterCard(p) {
+function posterCard(p, hero = false) {
   const next = upcoming(p.slug)[0];
   const meta = next
-    ? `${DAYS[parseDate(next.date).getUTCDay()]} ${parseDate(next.date).getUTCDate()} ${MONTHS[parseDate(next.date).getUTCMonth()].slice(0, 3)} · ${esc(next.city)}`
-    : "Dates soon";
-  return `<a class="card" href="/repertoire/${p.slug}/">
+    ? `${fmtShort(parseDate(next.date))} · ${esc(next.city)}`
+    : esc(p.archived ? t("fromArchive") : t("datesSoon"));
+  return `<a class="card${hero ? " is-hero" : ""}${p.archived ? " is-archived" : ""}" href="/repertoire/${p.slug}/">
   <div class="card-art">
     ${p.premiereBadge ? `<span class="card-badge">${esc(p.premiereBadge)}</span>` : ""}
     <img src="${esc(p.poster)}" alt="${esc(p.posterAlt)}" width="620" height="877" loading="lazy" decoding="async">
@@ -242,8 +297,9 @@ function posterCard(p) {
 
 /* ---------- layout ---------- */
 function layout({ title, description, current, body, bodyClass = "", path: canon = "/" }) {
+  const OG_LOCALE = { sk: "sk_SK", en: "en_GB" };
   return `<!doctype html>
-<html lang="en">
+<html lang="${lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -252,8 +308,11 @@ function layout({ title, description, current, body, bodyClass = "", path: canon
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:type" content="website">
-<meta property="og:url" content="${esc(site.url + canon)}">
-<link rel="canonical" href="${esc(site.url + canon)}">
+<meta property="og:url" content="${esc(site.url + L(canon))}">
+<meta property="og:locale" content="${OG_LOCALE[lang] || lang}">
+<link rel="canonical" href="${esc(site.url + L(canon))}">
+${LANGS.map((lg) => `<link rel="alternate" hreflang="${lg}" href="${esc(site.url + L(canon, lg))}">`).join("\n")}
+<link rel="alternate" hreflang="x-default" href="${esc(site.url + L(canon, DEFAULT_LANG))}">
 <meta property="og:image" content="${esc(site.url)}/assets/photos/ensemble-wide.webp">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -262,8 +321,8 @@ function layout({ title, description, current, body, bodyClass = "", path: canon
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/styles.css">
 </head>
-<body${bodyClass ? ` class="${bodyClass}"` : ""}>
-<a class="skip" href="#main">Skip to content</a>
+<body${bodyClass ? ` class="${bodyClass}"` : ""} data-page="${esc(canon)}">
+<a class="skip" href="#main">${esc(t("skip"))}</a>
 <header class="topbar" data-topbar>
 ${nav(current)}
 ${ticker()}
@@ -281,9 +340,10 @@ ${popup()}
 /* ---------- stránky ---------- */
 function pageHome() {
   // bod 1 — Swan Lake patrí do stredu oblúka
-  const featured = productions.filter((p) => p.featured).slice(0, 5);
+  const featured = productions.filter((p) => p.featured && !p.archived).slice(0, 5);
+  // Swan Lake patrí do stredu — pri párnom počte na ľavú stredovú pozíciu
   const swanAt = featured.findIndex((p) => p.slug === "swan-lake");
-  if (swanAt > -1) featured.splice(2, 0, featured.splice(swanAt, 1)[0]);
+  if (swanAt > -1) featured.splice(Math.floor((featured.length - 1) / 2), 0, featured.splice(swanAt, 1)[0]);
   const a = site.about;
   const d = site.director;
   const h = site.hero;
@@ -303,12 +363,12 @@ function pageHome() {
 
 <section class="arc-sec" data-reveal>
   <div class="arc-wrap">
-    <div class="arc" id="home-arc" data-rail>
-      ${featured.map(posterCard).join("\n      ")}
+    <div class="arc n${featured.length}" id="home-arc" data-rail>
+      ${featured.map((p) => posterCard(p, p.slug === "swan-lake")).join("\n      ")}
     </div>
     <div class="rail-nav">
-      <button type="button" data-rail-prev="home-arc" aria-label="Previous">${ICON.left}</button>
-      <button type="button" data-rail-next="home-arc" aria-label="Next">${ICON.right}</button>
+      <button type="button" data-rail-prev="home-arc" aria-label="${esc(t("prev"))}">${ICON.left}</button>
+      <button type="button" data-rail-next="home-arc" aria-label="${esc(t("next"))}">${ICON.right}</button>
     </div>
   </div>
 </section>
@@ -320,10 +380,10 @@ function pageHome() {
     <div>
       <div class="sechead">
         <p class="label">${esc(a.eyebrow)}</p>
-        <h2 class="display">Slovakia's leading independent <em>contemporary ballet</em> company</h2>
+        <h2 class="display">${a.heading}</h2>
       </div>
       <div class="stack">
-        ${a.body.map((t) => `<p class="lede">${esc(t)}</p>`).join("\n        ")}
+        ${a.body.map((x) => `<p class="lede">${esc(x)}</p>`).join("\n        ")}
       </div>
       <div class="stats">
         ${a.stats
@@ -335,13 +395,13 @@ function pageHome() {
       </div>
     </div>
     <div class="about-media">
-      <span class="idx" aria-hidden="true"><b></b><span>Est. 2005 — Bratislava</span></span>
+      <span class="idx" aria-hidden="true"><b></b><span>${esc(a.since)}</span></span>
       <div class="framed marks">
         <figure class="figure square" style="margin:0">
-          <img src="${esc(a.photo)}" alt="The company in rehearsal with Ján Ďurovčík" width="1100" height="1100" loading="lazy" decoding="async">
+          <img src="${esc(a.photo)}" alt="${esc(a.photoAlt)}" width="1100" height="1100" loading="lazy" decoding="async">
         </figure>
       </div>
-      <p class="framed-cap">In rehearsal, Bratislava</p>
+      <p class="framed-cap">${esc(a.photoCap)}</p>
     </div>
   </div>
 </section>
@@ -367,9 +427,9 @@ function pageHome() {
 
 <section class="section wrap" data-reveal>
   <div class="split">
-    <div class="duo">
-      <figure class="duo-a" data-lit style="margin:0">
-        <img src="${esc(d.photo)}" alt="${esc(d.name)}" width="575" height="719" loading="lazy" decoding="async">
+    <div class="duo${d.photoW > d.photoH ? " is-wide" : ""}">
+      <figure class="duo-a${d.photoW > d.photoH ? " is-wide" : ""}" data-lit style="margin:0">
+        <img src="${esc(d.photo)}" alt="${esc(d.name)}" width="${d.photoW || 575}" height="${d.photoH || 719}" loading="lazy" decoding="async">
       </figure>
       ${d.photo2 ? `<figure class="duo-b" data-lit style="margin:0">
         <img src="${esc(d.photo2)}" alt="${esc(d.name)}" width="539" height="719" loading="lazy" decoding="async">
@@ -381,7 +441,7 @@ function pageHome() {
         <h2 class="display">${esc(d.name)}</h2>
       </div>
       <div class="stack">
-        ${d.bio.map((t) => `<p class="lede">${esc(t)}</p>`).join("\n        ")}
+        ${d.bio.map((x) => `<p class="lede">${esc(x)}</p>`).join("\n        ")}
       </div>
     </div>
   </div>
@@ -401,26 +461,42 @@ ${contactSection()}`;
 
 function pageRepertoire() {
   // bod 5 — všetkých päť titulov hneď hore, na jednu obrazovku
+  const active = productions.filter((p) => !p.archived);
+  const archive = productions.filter((p) => p.archived);
   const body = `
 <section class="rep-top">
   <div class="wrap">
-    <div class="rep-strip">
-      ${productions.map(posterCard).join("\n      ")}
+    <p class="label rep-label">${esc(t("repActive"))}</p>
+    <div class="rep-strip n${active.length}">
+      ${active.map((p) => posterCard(p)).join("\n      ")}
     </div>
   </div>
 </section>
 
 <section class="section tight wrap">
-  <div class="sechead">
-    <p class="label">Repertoire</p>
-    <h2 class="display">Five productions <em>in rotation</em></h2>
-    <p class="lede">Each piece is choreographed and directed by Ján Ďurovčík and performed by the company in Slovakia and on tour.</p>
+  <div class="sechead" style="margin-bottom:0">
+    <p class="label">${esc(t("repLabel"))}</p>
+    <h2 class="display">${t("repHeading")}</h2>
+    <p class="lede">${esc(t("repLede"))}</p>
   </div>
 </section>
+
+${archive.length
+  ? `<div class="divider" aria-hidden="true"><i></i><b></b><i></i></div>
+<section class="section tight wrap rep-archive">
+  <div class="sechead">
+    <p class="label">${esc(t("repArchive"))}</p>
+    <p class="lede">${esc(t("repArchiveLede"))}</p>
+  </div>
+  <div class="archive-strip">
+    ${archive.map((p) => posterCard(p)).join("\n    ")}
+  </div>
+</section>`
+  : ""}
 `;
   return layout({
-    title: `Repertoire — ${site.name}`,
-    description: "The full repertoire of the Slovak Dance Theatre.",
+    title: `${t("repTitle")} — ${site.name}`,
+    description: t("repDesc"),
     current: "repertoire",
     path: "/repertoire/",
     body,
@@ -444,7 +520,7 @@ function pageCalendar() {
     return `<div class="cal-row" data-production="${esc(p.production)}">
       <div class="cal-date">
         <b>${dt.getUTCDate()}</b>
-        <span>${DAYS[dt.getUTCDay()]} · ${p.time}</span>
+        <span>${t("days")[dt.getUTCDay()]} · ${p.time}</span>
       </div>
       <a class="cal-thumb" href="/repertoire/${esc(p.production)}/" tabindex="-1" aria-hidden="true">
         <img src="/assets/photos/t-${esc(p.production)}.webp" alt="" width="520" height="260" loading="lazy" decoding="async">
@@ -455,8 +531,8 @@ function pageCalendar() {
       </div>
       <div class="cal-cta">
         ${sold
-          ? `<span class="tag-out">Sold out</span>`
-          : `<a class="btn btn-line btn-sm" href="${esc(p.ticketUrl)}" target="_blank" rel="noopener">Tickets</a>`}
+          ? `<span class="tag-out">${esc(t("soldOut"))}</span>`
+          : `<a class="btn btn-line btn-sm" href="${esc(p.ticketUrl)}" target="_blank" rel="noopener">${esc(t("tickets"))}</a>`}
       </div>
     </div>`;
   };
@@ -465,14 +541,14 @@ function pageCalendar() {
   const body = `
 <section class="cal-head">
   <div class="wrap">
-    <h1 class="cal-h1">Upcoming performances, sold both on ticketportal and predpredaj</h1>
+    <h1 class="cal-h1">${esc(t("calH1"))}</h1>
     <div class="cal-filters">
       <div class="cal-filter is-prod" data-cal-filter>
-        <button type="button" data-filter="all" aria-pressed="true">All</button>
-        ${productions.map((p) => `<button type="button" data-filter="${p.slug}" aria-pressed="false"><span class="cf-thumb"><img src="/assets/photos/t-${p.slug}.webp" alt="" width="520" height="260" loading="lazy" decoding="async"></span><span>${esc(p.title)}</span></button>`).join("\n        ")}
+        <button type="button" data-filter="all" aria-pressed="true">${esc(t("all"))}</button>
+        ${productions.filter((p) => perfs.some((x) => x.production === p.slug)).map((p) => `<button type="button" data-filter="${p.slug}" aria-pressed="false"><span class="cf-thumb"><img src="/assets/photos/t-${p.slug}.webp" alt="" width="520" height="260" loading="lazy" decoding="async"></span><span>${esc(p.title)}</span></button>`).join("\n        ")}
       </div>
       <div class="cal-filter is-month">
-        <span class="flabel">Jump to</span>
+        <span class="flabel">${esc(t("jumpTo"))}</span>
         ${months.map((m) => `<a href="#m-${m.key}" data-month-jump>${monthName(m.key)}</a>`).join("\n        ")}
       </div>
     </div>
@@ -489,13 +565,13 @@ function pageCalendar() {
     )
     .join("\n  ")}
 
-  <p class="cal-empty" data-cal-empty hidden>No upcoming dates for this production yet.</p>
+  <p class="cal-empty" data-cal-empty hidden>${esc(t("calEmpty"))}</p>
 </section>
 `;
 
   return layout({
-    title: `Calendar — ${site.name}`,
-    description: "Upcoming performances of the Slovak Dance Theatre.",
+    title: `${t("calTitle")} — ${site.name}`,
+    description: t("calDesc"),
     current: "calendar",
     path: "/calendar/",
     body,
@@ -530,7 +606,7 @@ function pageDancers() {
       </button>
       ${hasBio
         ? `<template id="${id}" data-name="${esc(d.name)}" data-role="${esc(d.role)}" data-photo="${esc(d.photo || "")}">
-        ${d.bio.map((t) => `<p>${esc(t)}</p>`).join("\n        ")}
+        ${d.bio.map((x) => `<p>${esc(x)}</p>`).join("\n        ")}
       </template>`
         : ""}
     </div>`;
@@ -540,9 +616,9 @@ function pageDancers() {
   const body = `
 <section class="section wrap">
   <div class="sechead">
-    <p class="label">Dancers</p>
-    <h2 class="display">Team &amp; <em>artists</em></h2>
-    ${anyBio ? `<p class="lede">Click a portrait to read more.</p>` : ""}
+    <p class="label">${esc(t("dancersLabel"))}</p>
+    <h2 class="display">${t("dancersHeading")}</h2>
+    ${anyBio ? `<p class="lede">${esc(t("dancersLede"))}</p>` : ""}
   </div>
   ${groups
     .map(
@@ -556,8 +632,8 @@ function pageDancers() {
     .join("\n  ")}
 </section>
 
-<dialog class="bio-modal" id="bio-modal" aria-label="Dancer biography">
-  <button class="bio-close" type="button" aria-label="Close">${ICON.close}</button>
+<dialog class="bio-modal" id="bio-modal" aria-label="${esc(t("bioLabel"))}">
+  <button class="bio-close" type="button" aria-label="${esc(t("close"))}">${ICON.close}</button>
   <div class="bio-head">
     <span class="bio-photo" data-bio-photo></span>
     <div>
@@ -571,8 +647,8 @@ function pageDancers() {
 `;
 
   return layout({
-    title: `Dancers — ${site.name}`,
-    description: "The dancers and artistic team of the Slovak Dance Theatre.",
+    title: `${t("dancersTitle")} — ${site.name}`,
+    description: t("dancersDesc"),
     current: "dancers",
     path: "/dancers/",
     body,
@@ -592,8 +668,8 @@ function pageProduction(p) {
       <span class="hd-city">${esc(x.city)}</span>
       <span class="hd-venue">${x.note ? esc(x.note) : esc(x.venue)}</span>
       <span class="hd-when">
-        <b>${DAYS[dt.getUTCDay()].toUpperCase()} ${dt.getUTCDate()} ${MONTHS[dt.getUTCMonth()].slice(0, 3).toUpperCase()}</b>
-        <i>${sold ? "Sold out" : esc(x.time)}</i>
+        <b>${fmtCaps(dt)}</b>
+        <i>${sold ? esc(t("soldOut")) : esc(x.time)}</i>
       </span>
     </a>`;
   };
@@ -614,10 +690,17 @@ function pageProduction(p) {
       </div>
     </details>`;
 
+  /* „4 najbližšie termíny“ / „4 upcoming dates“ */
+  const datesLabel = (n) =>
+    lang === "sk"
+      ? `${n} ${n === 1 ? "najbližší termín" : n < 5 ? "najbližšie termíny" : "najbližších termínov"}`
+      : `${n} upcoming date${n === 1 ? "" : "s"}`;
+  const heroPos = p.heroPos ? ` style="object-position:${esc(p.heroPos)}"` : "";
+
   const body = `
 <section class="show-hero">
   <div class="media">
-    <img src="${esc(p.heroImage || p.poster)}" alt="" width="1400" height="788" fetchpriority="high">
+    <img src="${esc(p.heroImage || p.poster)}" alt="" width="1400" height="788" fetchpriority="high"${heroPos}>
   </div>
   <div class="scrim"></div>
   <div class="wrap show-hero-inner">
@@ -628,16 +711,18 @@ function pageProduction(p) {
   ${perfs.length
     ? `<div class="hero-dates">
     ${perfs.slice(0, 6).map(heroDate).join("\n    ")}
-    <a class="hd-all" href="/calendar/"><span>${ICON.cal}</span><b>Full<br>calendar</b></a>
+    <a class="hd-all" href="/calendar/"><span>${ICON.cal}</span><b>${t("fullCal")}</b></a>
   </div>`
     : ""}
 </section>
 
 <div class="show-cta">
   <div class="show-cta-in">
-    <p class="label">${esc(p.title)}${perfs.length ? ` · ${perfs.length} upcoming date${perfs.length > 1 ? "s" : ""}` : ""}</p>
-    ${p.trailer ? `<a class="btn btn-line" href="${esc(p.trailer)}" target="_blank" rel="noopener">Trailer</a>` : ""}
-    <a class="btn btn-dark btn-big" href="${esc(p.ticketUrl)}" target="_blank" rel="noopener">Tickets</a>
+    <p class="label">${esc(p.title)}${perfs.length ? ` · ${datesLabel(perfs.length)}` : ""}</p>
+    ${p.trailer ? `<a class="btn btn-line" href="${esc(p.trailer)}" target="_blank" rel="noopener">${esc(t("trailer"))}</a>` : ""}
+    ${p.archived
+      ? `<span class="tag-out">${esc(t("fromArchive"))}</span>`
+      : `<a class="btn btn-dark btn-big" href="${esc(p.ticketUrl)}" target="_blank" rel="noopener">${esc(t("tickets"))}</a>`}
   </div>
 </div>
 
@@ -645,34 +730,42 @@ function pageProduction(p) {
   <div class="split top">
     <div>
       <div class="sechead">
-        <p class="label">About the production</p>
+        <p class="label">${esc(t("aboutProd"))}</p>
         <h2 class="display">${esc(p.title)}</h2>
       </div>
       <div class="stack">
-        ${p.description.map((t) => `<p class="lede">${esc(t)}</p>`).join("\n        ")}
+        ${p.description.map((x) => `<p class="lede">${esc(x)}</p>`).join("\n        ")}
       </div>
     </div>
     <div>
-      <p class="label" style="margin-bottom:18px">Credits</p>
+      <p class="label" style="margin-bottom:18px">${esc(t("credits"))}</p>
       <dl class="meta-list">
-        ${Object.entries(p.credits)
-          .map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`)
+        ${p.credits
+          .map((c) => `<div><dt>${esc(c.label)}</dt><dd>${esc(c.value)}</dd></div>`)
           .join("\n        ")}
-        <div><dt>Premiere</dt><dd>${esc(p.premiere)}</dd></div>
-        <div><dt>Performers</dt><dd>${p.performers}</dd></div>
-        <div><dt>Running time</dt><dd>${esc(p.duration)}</dd></div>
+        ${p.premiere ? `<div><dt>${esc(t("premiere"))}</dt><dd>${esc(p.premiere)}</dd></div>` : ""}
+        ${p.performers ? `<div><dt>${esc(t("performers"))}</dt><dd>${p.performers}</dd></div>` : ""}
+        ${p.duration ? `<div><dt>${esc(t("runtime"))}</dt><dd>${esc(p.duration)}</dd></div>` : ""}
       </dl>
     </div>
   </div>
 </section>
 
+${p.keyVisual
+  ? `<section class="section tight wrap" data-reveal>
+  <figure class="kv${p.keyVisual.w === p.keyVisual.h ? " is-square" : ""}">
+    <img src="${esc(p.keyVisual.src)}" alt="${esc(t("keyVisual"))} — ${esc(p.title)}" width="${p.keyVisual.w}" height="${p.keyVisual.h}" loading="lazy" decoding="async">
+  </figure>
+</section>`
+  : ""}
+
 ${p.trailer
   ? `<section class="section tight wrap" data-reveal>
-  <a class="trailer" href="${esc(p.trailer)}" target="_blank" rel="noopener" aria-label="Watch the trailer for ${esc(p.title)}">
-    <img src="${esc(p.heroImage || p.poster)}" alt="" width="1400" height="788" loading="lazy" decoding="async">
+  <a class="trailer" href="${esc(p.trailer)}" target="_blank" rel="noopener" aria-label="${esc(t("watchTrailerFor"))} ${esc(p.title)}">
+    <img src="${esc(p.heroImage || p.poster)}" alt="" width="1400" height="788" loading="lazy" decoding="async"${heroPos}>
     <span class="trailer-veil"></span>
     <span class="trailer-play">${ICON.play}</span>
-    <span class="trailer-cap"><b>Watch the trailer</b><i>${esc(p.title)}</i></span>
+    <span class="trailer-cap"><b>${esc(t("watchTrailer"))}</b><i>${esc(p.title)}</i></span>
   </a>
 </section>`
   : ""}
@@ -684,8 +777,8 @@ ${hasQuotes
       ${p.quotes
         .map(
           (q, i) => `<figure class="press-q" data-reveal style="--d:${i * 130}ms">
-        <div class="stars" aria-label="${q.stars} out of 5">${stars(q.stars)}</div>
-        <blockquote>“${esc(q.text)}”</blockquote>
+        <div class="stars" aria-label="${q.stars} ${esc(t("outOf5"))}">${stars(q.stars)}</div>
+        <blockquote>${t("qOpen")}${esc(q.text)}${t("qClose")}</blockquote>
         <figcaption>${esc(q.source)}</figcaption>
       </figure>`
         )
@@ -698,8 +791,8 @@ ${hasQuotes
 ${p.cast || p.production
   ? `<section class="section wrap" data-reveal>
   <div class="panels">
-    ${p.cast ? panel("Cast", p.cast) : ""}
-    ${p.production ? panel("Production", p.production) : ""}
+    ${p.cast ? panel(t("cast"), p.cast) : ""}
+    ${p.production ? panel(t("production"), p.production) : ""}
   </div>
 </section>`
   : ""}
@@ -707,11 +800,11 @@ ${p.cast || p.production
 ${gal.length
   ? `<section class="section tight" data-reveal>
   <div class="wrap slider-head">
-    <p class="label">Gallery</p>
+    <p class="label">${esc(t("gallery"))}</p>
     <div class="slider-nav">
-      <button type="button" data-slide-prev aria-label="Previous photo">${ICON.left}</button>
+      <button type="button" data-slide-prev aria-label="${esc(t("prevPhoto"))}">${ICON.left}</button>
       <span class="slider-count"><b data-slide-now>1</b> / ${gal.length}</span>
-      <button type="button" data-slide-next aria-label="Next photo">${ICON.right}</button>
+      <button type="button" data-slide-next aria-label="${esc(t("nextPhoto"))}">${ICON.right}</button>
     </div>
   </div>
   <div class="slider" data-slider>
@@ -719,14 +812,14 @@ ${gal.length
       ${gal
         .map(
           (src, i) => `<figure class="slide"${i === 0 ? ' data-first' : ""}>
-        <img src="${esc(src)}" alt="${esc(p.title)} — photo ${i + 1}" width="1080" height="720" loading="${i < 2 ? "eager" : "lazy"}" decoding="async">
+        <img src="${esc(src)}" alt="${esc(p.title)} — ${esc(t("photo").toLowerCase())} ${i + 1}" width="1080" height="720" loading="${i < 2 ? "eager" : "lazy"}" decoding="async">
       </figure>`
         )
         .join("\n      ")}
     </div>
   </div>
   <div class="wrap slider-dots">
-    ${gal.map((_, i) => `<button type="button" data-slide-to="${i}" aria-label="Photo ${i + 1}"${i === 0 ? ' aria-current="true"' : ""}></button>`).join("")}
+    ${gal.map((_, i) => `<button type="button" data-slide-to="${i}" aria-label="${esc(t("photo"))} ${i + 1}"${i === 0 ? ' aria-current="true"' : ""}></button>`).join("")}
   </div>
 </section>`
   : ""}
@@ -751,49 +844,58 @@ function pageLegal(title, intro) {
   </div>
 </section>
 `;
-  return layout({ title: `${title} — ${site.name}`, description: intro, current: "", body });
+  const slug = { [t("privacy")]: "/privacy/", [t("cookies")]: "/cookies/", [t("terms")]: "/terms/" }[title] || "/";
+  return layout({ title: `${title} — ${site.name}`, description: intro, current: "", path: slug, body });
 }
 
 /* ---------- preview režim ----------
    PREVIEW=1 node build.mjs  → plochá štruktúra a relatívne odkazy,
    aby sa web dal otvoriť aj bez servera s pekným smerovaním URL.
-   Produkčný build (bez PREVIEW) používa čisté adresy /repertoire/carmen/. */
+   Produkčný build (bez PREVIEW) používa čisté adresy /repertoire/carmen/ a /en/repertoire/carmen/. */
 const PREVIEW = !!process.env.PREVIEW;
+
+/** /en/repertoire/carmen/ → en-show-carmen.html,  /calendar/ → calendar.html */
+function flatName(p) {
+  let pre = "";
+  const m = p.match(/^\/([a-z]{2})\//);
+  if (m && LANGS.includes(m[1]) && m[1] !== DEFAULT_LANG) {
+    pre = m[1] + "-";
+    p = p.slice(3);
+  }
+  const rest = p.replace(/^\/+|\/+$/g, "");
+  if (!rest) return pre + "index.html";
+  if (rest.startsWith("repertoire/")) return pre + "show-" + rest.slice("repertoire/".length) + ".html";
+  return pre + rest + ".html";
+}
 
 function toPreview(html) {
   return html
     .replace(/(href|src)="\/assets\//g, '$1="assets/')
     .replace(/data-video="\/assets\/([^,"]+),\/assets\/([^"]+)"/g, 'data-video="assets/$1,assets/$2"')
-    .replace(/href="\/repertoire\/([a-z0-9-]+)\/"/g, 'href="show-$1.html"')
-    .replace(/href="\/repertoire\/"/g, 'href="repertoire.html"')
-    .replace(/href="\/calendar\/"/g, 'href="calendar.html"')
-    .replace(/href="\/dancers\/"/g, 'href="dancers.html"')
-    .replace(/href="\/privacy\/"/g, 'href="privacy.html"')
-    .replace(/href="\/cookies\/"/g, 'href="cookies.html"')
-    .replace(/href="\/terms\/"/g, 'href="terms.html"')
-    .replace(/href="\/#contact"/g, 'href="index.html#contact"')
-    .replace(/href="\/"/g, 'href="index.html"');
+    .replace(/href="(\/[^"#]*)(#[^"]*)?"/g, (_, p, hash = "") => `href="${flatName(p)}${hash}"`);
 }
 
-const PREVIEW_NAME = {
-  ".": "index.html",
-  repertoire: "repertoire.html",
-  calendar: "calendar.html",
-  dancers: "dancers.html",
-  privacy: "privacy.html",
-  cookies: "cookies.html",
-  terms: "terms.html",
-};
+/** interné odkazy dostanú prefix jazyka (/calendar/ → /en/calendar/) */
+function prefixLinks(html) {
+  if (lang === DEFAULT_LANG) return html;
+  return html.replace(/href="\/(?!assets\/|\/)/g, `href="/${lang}/`);
+}
+
+/** SK | EN prepínač ukazuje na rovnakú stránku v druhom jazyku */
+function resolveSwitch(html, pagePath) {
+  return html.replace(/\{\{LANG:([a-z]{2})\}\}/g, (_, lg) => L(pagePath, lg));
+}
 
 /* ---------- zápis ---------- */
-async function write(rel, html) {
+async function write(pagePath, html) {
+  html = resolveSwitch(prefixLinks(html), pagePath);
+  const full = L(pagePath);                // /en/calendar/
   let file;
   if (PREVIEW) {
-    const name = PREVIEW_NAME[rel] || rel.replace(/^repertoire\//, "show-") + ".html";
-    file = path.join(DIST, name);
+    file = path.join(DIST, flatName(full));
     html = toPreview(html);
   } else {
-    file = path.join(DIST, rel, "index.html");
+    file = path.join(DIST, full, "index.html");
   }
   await mkdir(path.dirname(file), { recursive: true });
   await writeFile(file, html, "utf8");
@@ -804,14 +906,25 @@ await rm(DIST, { recursive: true, force: true });
 await mkdir(DIST, { recursive: true });
 
 const written = [];
-written.push(await write(".", pageHome()));
-written.push(await write("repertoire", pageRepertoire()));
-written.push(await write("calendar", pageCalendar()));
-written.push(await write("dancers", pageDancers()));
-for (const p of productions) written.push(await write(`repertoire/${p.slug}`, pageProduction(p)));
-written.push(await write("privacy", pageLegal("Privacy", "Privacy policy — to be supplied.")));
-written.push(await write("cookies", pageLegal("Cookies", "Cookie policy — to be supplied. This site uses no tracking cookies.")));
-written.push(await write("terms", pageLegal("Terms", "Terms of use — to be supplied.")));
+const urls = [];
+for (const lg of LANGS) {
+  useLang(lg);
+  const pages = [
+    ["/", pageHome],
+    ["/repertoire/", pageRepertoire],
+    ["/calendar/", pageCalendar],
+    ["/dancers/", pageDancers],
+    ...productions.map((p) => [`/repertoire/${p.slug}/`, () => pageProduction(p)]),
+    ["/privacy/", () => pageLegal(t("privacy"), t("privacyIntro"))],
+    ["/cookies/", () => pageLegal(t("cookies"), t("cookiesIntro"))],
+    ["/terms/", () => pageLegal(t("terms"), t("termsIntro"))],
+  ];
+  for (const [pp, fn] of pages) {
+    written.push(await write(pp, fn()));
+    urls.push(L(pp));
+  }
+}
+useLang(DEFAULT_LANG);
 
 /* statické súbory */
 await mkdir(path.join(DIST, "assets"), { recursive: true });
@@ -837,16 +950,6 @@ if (!PREVIEW) {
     "utf8"
   );
 
-  const urls = [
-    "/",
-    "/repertoire/",
-    "/calendar/",
-    "/dancers/",
-    ...productions.map((p) => `/repertoire/${p.slug}/`),
-    "/privacy/",
-    "/cookies/",
-    "/terms/",
-  ];
   const today = new Date().toISOString().slice(0, 10);
   await writeFile(
     path.join(DIST, "sitemap.xml"),
@@ -855,7 +958,7 @@ if (!PREVIEW) {
 ${urls
   .map(
     (u) =>
-      `  <url><loc>${site.url}${u}</loc><lastmod>${today}</lastmod><priority>${u === "/" ? "1.0" : "0.7"}</priority></url>`
+      `  <url><loc>${site.url}${u}</loc><lastmod>${today}</lastmod><priority>${u === "/" || u === L("/", "en") ? "1.0" : "0.7"}</priority></url>`
   )
   .join("\n")}
 </urlset>

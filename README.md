@@ -74,3 +74,19 @@ Odporúčaná cesta — každý `git push` znamená automatický redeploy.
 `npx wrangler pages deploy dist --project-name=sdt` po lokálnom `node build.mjs`.
 Pozor: projekt založený cez Direct Upload sa už nedá neskôr prepnúť na Git —
 musel by sa založiť nový.
+
+## Jazyky (SK / EN)
+
+Slovenčina je na koreni domény (`/`, `/calendar/`…), angličtina pod `/en/` (`/en/calendar/`…).
+Poradie určuje `languages` v `data/site.json` — prvý jazyk ide na koreň. Prehodením na
+`["en", "sk"]` sa angličtina presunie na koreň a slovenčina pod `/sk/`.
+
+Každý text v `data/site.json` a `data/events.json` môže byť buď obyčajný reťazec (rovnaký
+v oboch jazykoch — mená, telefón, odkazy), alebo dvojica:
+
+```json
+"tagline": { "sk": "Mozart v smiechu aj v slzách", "en": "Mozart, in laughter and in tears" }
+```
+
+Texty rozhrania (menu, tlačidlá, nadpisy sekcií, mesiace, dni) sú v `data/ui.json`.
+Chýbajúci kľúč build zastaví s chybou, takže sa nemôže stať, že by na webe ostala medzera.

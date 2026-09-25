@@ -1,0 +1,370 @@
+{
+  "_comment": {
+    "sk": "Texty rozhrania. Každá položka má slovenskú aj anglickú verziu. <em> v nadpisoch = zvýraznené slovo.",
+    "en": "UI strings."
+  },
+  "langName": {
+    "sk": "Slovenčina",
+    "en": "English"
+  },
+  "langSwitch": {
+    "sk": "Prepnúť jazyk",
+    "en": "Switch language"
+  },
+  "skip": {
+    "sk": "Preskočiť na obsah",
+    "en": "Skip to content"
+  },
+  "navRepertoire": {
+    "sk": "Repertoár",
+    "en": "Repertoire"
+  },
+  "navCalendar": {
+    "sk": "Kalendár",
+    "en": "Calendar"
+  },
+  "navDancers": {
+    "sk": "Tanečníci",
+    "en": "Dancers"
+  },
+  "navContact": {
+    "sk": "Kontakt",
+    "en": "Contact"
+  },
+  "logoSub": {
+    "sk": "Divadlo tanca",
+    "en": "Dance Theatre"
+  },
+  "menu": {
+    "sk": "Menu",
+    "en": "Menu"
+  },
+  "close": {
+    "sk": "Zavrieť",
+    "en": "Close"
+  },
+  "prev": {
+    "sk": "Predchádzajúce",
+    "en": "Previous"
+  },
+  "next": {
+    "sk": "Ďalšie",
+    "en": "Next"
+  },
+  "tickerLabel": {
+    "sk": "Mestá, v ktorých súbor hral",
+    "en": "Cities the company has played"
+  },
+  "bookings": {
+    "sk": "Booking",
+    "en": "Bookings"
+  },
+  "phone": {
+    "sk": "Telefón",
+    "en": "Phone"
+  },
+  "email": {
+    "sk": "E-mail",
+    "en": "Email"
+  },
+  "address": {
+    "sk": "Adresa",
+    "en": "Address"
+  },
+  "openMaps": {
+    "sk": "Otvoriť v mapách",
+    "en": "Open in maps"
+  },
+  "mapRiver": {
+    "sk": "DUNAJ",
+    "en": "DANUBE"
+  },
+  "rights": {
+    "sk": "Všetky práva vyhradené.",
+    "en": "All rights reserved."
+  },
+  "outOf5": {
+    "sk": "z 5",
+    "en": "out of 5"
+  },
+  "datesSoon": {
+    "sk": "Termíny čoskoro",
+    "en": "Dates soon"
+  },
+  "repLabel": {
+    "sk": "Repertoár",
+    "en": "Repertoire"
+  },
+  "repHeading": {
+    "sk": "Tanečné divadlo <em>Jána Ďurovčíka</em>",
+    "en": "The dance theatre of <em>Ján Ďurovčík</em>"
+  },
+  "repLede": {
+    "sk": "Každé dielo choreograficky aj režijne pripravil Ján Ďurovčík a súbor ho uvádza na Slovensku aj na turné.",
+    "en": "Each piece is choreographed and directed by Ján Ďurovčík and performed by the company in Slovakia and on tour."
+  },
+  "repTitle": {
+    "sk": "Repertoár",
+    "en": "Repertoire"
+  },
+  "repDesc": {
+    "sk": "Kompletný repertoár Slovenského divadla tanca.",
+    "en": "The full repertoire of the Slovak Dance Theatre."
+  },
+  "calTitle": {
+    "sk": "Kalendár",
+    "en": "Calendar"
+  },
+  "calDesc": {
+    "sk": "Najbližšie predstavenia Slovenského divadla tanca.",
+    "en": "Upcoming performances of the Slovak Dance Theatre."
+  },
+  "calH1": {
+    "sk": "Najbližšie predstavenia, vstupenky v predaji na Ticketportal aj Predpredaj",
+    "en": "Upcoming performances, sold both on Ticketportal and Predpredaj"
+  },
+  "all": {
+    "sk": "Všetky",
+    "en": "All"
+  },
+  "jumpTo": {
+    "sk": "Prejsť na",
+    "en": "Jump to"
+  },
+  "soldOut": {
+    "sk": "Vypredané",
+    "en": "Sold out"
+  },
+  "tickets": {
+    "sk": "Vstupenky",
+    "en": "Tickets"
+  },
+  "calEmpty": {
+    "sk": "Pre toto predstavenie zatiaľ nie sú vypísané termíny.",
+    "en": "No upcoming dates for this production yet."
+  },
+  "dancersLabel": {
+    "sk": "Tanečníci",
+    "en": "Dancers"
+  },
+  "dancersHeading": {
+    "sk": "Tím a <em>umelci</em>",
+    "en": "Team &amp; <em>artists</em>"
+  },
+  "dancersLede": {
+    "sk": "Kliknite na portrét a prečítajte si viac.",
+    "en": "Click a portrait to read more."
+  },
+  "dancersTitle": {
+    "sk": "Tanečníci",
+    "en": "Dancers"
+  },
+  "dancersDesc": {
+    "sk": "Tanečníci a umelecký tím Slovenského divadla tanca.",
+    "en": "The dancers and artistic team of the Slovak Dance Theatre."
+  },
+  "bioLabel": {
+    "sk": "Životopis tanečníka",
+    "en": "Dancer biography"
+  },
+  "fullCal": {
+    "sk": "Celý<br>kalendár",
+    "en": "Full<br>calendar"
+  },
+  "trailer": {
+    "sk": "Trailer",
+    "en": "Trailer"
+  },
+  "aboutProd": {
+    "sk": "O inscenácii",
+    "en": "About the production"
+  },
+  "credits": {
+    "sk": "Tvorcovia",
+    "en": "Credits"
+  },
+  "premiere": {
+    "sk": "Premiéra",
+    "en": "Premiere"
+  },
+  "performers": {
+    "sk": "Účinkujúci",
+    "en": "Performers"
+  },
+  "runtime": {
+    "sk": "Dĺžka",
+    "en": "Running time"
+  },
+  "watchTrailer": {
+    "sk": "Pozrite si trailer",
+    "en": "Watch the trailer"
+  },
+  "watchTrailerFor": {
+    "sk": "Pozrite si trailer k inscenácii",
+    "en": "Watch the trailer for"
+  },
+  "cast": {
+    "sk": "Obsadenie",
+    "en": "Cast"
+  },
+  "production": {
+    "sk": "Produkcia",
+    "en": "Production"
+  },
+  "gallery": {
+    "sk": "Galéria",
+    "en": "Gallery"
+  },
+  "prevPhoto": {
+    "sk": "Predchádzajúca fotka",
+    "en": "Previous photo"
+  },
+  "nextPhoto": {
+    "sk": "Ďalšia fotka",
+    "en": "Next photo"
+  },
+  "photo": {
+    "sk": "Fotka",
+    "en": "Photo"
+  },
+  "privacy": {
+    "sk": "Ochrana súkromia",
+    "en": "Privacy"
+  },
+  "privacyIntro": {
+    "sk": "Zásady ochrany osobných údajov — doplníme.",
+    "en": "Privacy policy — to be supplied."
+  },
+  "cookies": {
+    "sk": "Cookies",
+    "en": "Cookies"
+  },
+  "cookiesIntro": {
+    "sk": "Zásady používania cookies — doplníme. Tento web nepoužíva sledovacie cookies.",
+    "en": "Cookie policy — to be supplied. This site uses no tracking cookies."
+  },
+  "terms": {
+    "sk": "Podmienky používania",
+    "en": "Terms"
+  },
+  "termsIntro": {
+    "sk": "Podmienky používania — doplníme.",
+    "en": "Terms of use — to be supplied."
+  },
+  "months": {
+    "sk": [
+      "január",
+      "február",
+      "marec",
+      "apríl",
+      "máj",
+      "jún",
+      "júl",
+      "august",
+      "september",
+      "október",
+      "november",
+      "december"
+    ],
+    "en": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ]
+  },
+  "monthsShort": {
+    "sk": [
+      "jan",
+      "feb",
+      "mar",
+      "apr",
+      "máj",
+      "jún",
+      "júl",
+      "aug",
+      "sep",
+      "okt",
+      "nov",
+      "dec"
+    ],
+    "en": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ]
+  },
+  "days": {
+    "sk": [
+      "Ne",
+      "Po",
+      "Ut",
+      "St",
+      "Št",
+      "Pi",
+      "So"
+    ],
+    "en": [
+      "Sun",
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat"
+    ]
+  },
+  "dayDot": {
+    "sk": ".",
+    "en": ""
+  },
+  "qOpen": {
+    "sk": "„",
+    "en": "“"
+  },
+  "qClose": {
+    "sk": "“",
+    "en": "”"
+  },
+  "emailProd": {
+    "sk": "Produkcia",
+    "en": "Production"
+  },
+  "repActive": {
+    "sk": "Aktuálny repertoár",
+    "en": "Current repertoire"
+  },
+  "repArchive": {
+    "sk": "Archív",
+    "en": "Archive"
+  },
+  "repArchiveLede": {
+    "sk": "Inscenácie, ktoré súbor v minulosti uvádzal doma aj na turné.",
+    "en": "Productions the company has performed at home and on tour."
+  },
+  "fromArchive": {
+    "sk": "Z archívu",
+    "en": "From the archive"
+  },
+  "keyVisual": {
+    "sk": "Plagát inscenácie",
+    "en": "Production poster"
+  }
+}

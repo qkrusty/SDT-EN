@@ -1,362 +1,701 @@
 {
-  "name": "Slovak Dance Theatre",
+  "name": {
+    "sk": "Slovenské divadlo tanca",
+    "en": "Slovak Dance Theatre"
+  },
   "nameSk": "Slovenské divadlo tanca",
-  "tagline": "Pushing the boundaries of dance and theatre",
-  "description": "Modern dance company based in Slovakia. Explore our repertoire, meet our dancers, and follow the latest performances.",
+  "tagline": {
+    "sk": "Posúvame hranice tanca a divadla",
+    "en": "Pushing the boundaries of dance and theatre"
+  },
+  "description": {
+    "sk": "Súbor súčasného baletu zo Slovenska. Repertoár, tanečníci a najbližšie predstavenia Slovenského divadla tanca.",
+    "en": "Modern dance company based in Slovakia. Explore our repertoire, meet our dancers, and follow the latest performances."
+  },
   "url": "https://sdt.sk",
   "social": {
     "facebook": "https://www.facebook.com/p/Slovensk%C3%A9-Divadlo-Tanca-61570987910309/",
     "instagram": "https://www.instagram.com/sdt_new/"
   },
   "cities": [
-    "New York",
-    "London",
-    "Tokyo",
-    "Toronto",
-    "Mexico City",
-    "Amsterdam",
-    "Beijing",
-    "Rome",
-    "Madrid",
-    "Ottawa",
-    "Québec",
-    "Helsinki",
-    "Graz",
-    "Kraków",
-    "Antwerp",
-    "Prague",
-    "Vienna",
-    "Bratislava"
+    {
+      "sk": "New York",
+      "en": "New York"
+    },
+    {
+      "sk": "Londýn",
+      "en": "London"
+    },
+    {
+      "sk": "Tokio",
+      "en": "Tokyo"
+    },
+    {
+      "sk": "Toronto",
+      "en": "Toronto"
+    },
+    {
+      "sk": "Mexiko",
+      "en": "Mexico City"
+    },
+    {
+      "sk": "Amsterdam",
+      "en": "Amsterdam"
+    },
+    {
+      "sk": "Peking",
+      "en": "Beijing"
+    },
+    {
+      "sk": "Rím",
+      "en": "Rome"
+    },
+    {
+      "sk": "Madrid",
+      "en": "Madrid"
+    },
+    {
+      "sk": "Ottawa",
+      "en": "Ottawa"
+    },
+    {
+      "sk": "Québec",
+      "en": "Québec"
+    },
+    {
+      "sk": "Helsinki",
+      "en": "Helsinki"
+    },
+    {
+      "sk": "Graz",
+      "en": "Graz"
+    },
+    {
+      "sk": "Krakov",
+      "en": "Kraków"
+    },
+    {
+      "sk": "Antverpy",
+      "en": "Antwerp"
+    },
+    {
+      "sk": "Praha",
+      "en": "Prague"
+    },
+    {
+      "sk": "Viedeň",
+      "en": "Vienna"
+    },
+    {
+      "sk": "Bratislava",
+      "en": "Bratislava"
+    }
   ],
   "heroQuotes": [
     {
       "stars": 5,
-      "text": "It is amazing to experience the passion of these dancers up close!",
-      "source": "Londondance, London"
+      "text": {
+        "sk": "Zažiť vášeň týchto tanečníkov zblízka je úžasné!",
+        "en": "It is amazing to experience the passion of these dancers up close!"
+      },
+      "source": {
+        "sk": "Londondance, Londýn",
+        "en": "Londondance, London"
+      }
     },
     {
       "stars": 5,
-      "text": "The lead role performer is one of the finest soloists I have ever seen",
+      "text": {
+        "sk": "Predstaviteľ hlavnej úlohy je jeden z najlepších sólistov, akých som kedy videla",
+        "en": "The lead role performer is one of the finest soloists I have ever seen"
+      },
       "source": "Vanessa Threapleton, BBC"
     },
     {
       "stars": 5,
-      "text": "Feast for the eyes, brilliant choreography",
-      "source": "Helsingin Sanomat, Finland"
+      "text": {
+        "sk": "Pastva pre oči, brilantná choreografia",
+        "en": "Feast for the eyes, brilliant choreography"
+      },
+      "source": {
+        "sk": "Helsingin Sanomat, Fínsko",
+        "en": "Helsingin Sanomat, Finland"
+      }
     },
     {
       "stars": 5,
-      "text": "Ďurovčík's Amadeus provoked madness!",
+      "text": {
+        "sk": "Ďurovčíkov Amadeus vyvolal šialenstvo!",
+        "en": "Ďurovčík's Amadeus provoked madness!"
+      },
       "source": "Topky.sk"
     }
   ],
   "about": {
-    "eyebrow": "About us",
-    "heading": "Slovakia's leading independent contemporary ballet company",
-    "body": [
-      "The Slovak Dance Theatre (SDT), founded in 2005 by celebrated choreographer and director Ján Ďurovčík, is today regarded as the most significant independent contemporary ballet company in Slovakia. From its inception, SDT has pursued a bold artistic vision, merging dance, drama, music and visual spectacle into emotionally charged productions that reach both critics and audiences.",
-      "On the international stage, SDT has achieved remarkable success. Its Firebird World Tour (2008–2009) brought Slovak dance to audiences in New York, London, Amsterdam, Antwerp, Kraków and Bytom, confirming the company's standing among Europe's leading dance ensembles. Further tours with Carmen extended the company's reach to Mexico, Finland, Croatia, Serbia and Asia, consistently drawing standing ovations and glowing reviews."
-    ],
+    "eyebrow": {
+      "sk": "O nás",
+      "en": "About us"
+    },
+    "heading": {
+      "sk": "Popredný nezávislý súbor <em>súčasného baletu</em> na Slovensku",
+      "en": "Slovakia's leading independent <em>contemporary ballet</em> company"
+    },
+    "body": {
+      "sk": [
+        "Slovenské divadlo tanca (SDT), ktoré v roku 2005 založil uznávaný choreograf a režisér Ján Ďurovčík, je dnes považované za najvýznamnejší nezávislý súbor súčasného baletu na Slovensku. Od svojho vzniku presadzuje odvážnu umeleckú víziu, ktorá spája tanec, drámu, hudbu a vizuálnu podívanú do emocionálne silných inscenácií, oslovujúcich kritikov aj divákov.",
+        "Na medzinárodnej scéne dosiahlo SDT pozoruhodné úspechy. Svetové turné Vtáka Ohniváka (2008 – 2009) prinieslo slovenský tanec divákom v New Yorku, Londýne, Amsterdame, Antverpách, Krakove a Bytome a potvrdilo miesto súboru medzi poprednými tanečnými súbormi Európy. Ďalšie turné s Carmen rozšírili jeho pôsobenie do Mexika, Fínska, Chorvátska, Srbska a Ázie, kde sa predstavenia pravidelne končili potleskom v stoji a nadšenými recenziami."
+      ],
+      "en": [
+        "The Slovak Dance Theatre (SDT), founded in 2005 by celebrated choreographer and director Ján Ďurovčík, is today regarded as the most significant independent contemporary ballet company in Slovakia. From its inception, SDT has pursued a bold artistic vision, merging dance, drama, music and visual spectacle into emotionally charged productions that reach both critics and audiences.",
+        "On the international stage, SDT has achieved remarkable success. Its Firebird World Tour (2008–2009) brought Slovak dance to audiences in New York, London, Amsterdam, Antwerp, Kraków and Bytom, confirming the company's standing among Europe's leading dance ensembles. Further tours with Carmen extended the company's reach to Mexico, Finland, Croatia, Serbia and Asia, consistently drawing standing ovations and glowing reviews."
+      ]
+    },
     "stats": [
       {
         "value": "2005",
-        "label": "Founded by Ján Ďurovčík"
+        "label": {
+          "sk": "Založil Ján Ďurovčík",
+          "en": "Founded by Ján Ďurovčík"
+        }
       },
       {
         "value": "18",
-        "label": "Cities on four continents"
+        "label": {
+          "sk": "Miest na štyroch kontinentoch",
+          "en": "Cities on four continents"
+        }
       },
       {
         "value": "400k+",
-        "label": "Spectators for The Eighth Continent"
+        "label": {
+          "sk": "Divákov muzikálu Ôsmy svetadiel",
+          "en": "Spectators for The Eighth Continent"
+        }
       },
       {
         "value": "30",
-        "label": "Members of the company"
+        "label": {
+          "sk": "Stálych členov súboru",
+          "en": "Permanent company members"
+        }
       }
     ],
-    "photo": "/assets/photos/company-rehearsal.webp"
+    "photo": "/assets/photos/company-rehearsal.webp",
+    "photoAlt": {
+      "sk": "Súbor na skúške s Jánom Ďurovčíkom",
+      "en": "The company in rehearsal with Ján Ďurovčík"
+    },
+    "photoCap": {
+      "sk": "Na skúške, Bratislava",
+      "en": "In rehearsal, Bratislava"
+    },
+    "since": {
+      "sk": "Od roku 2005 — Bratislava",
+      "en": "Est. 2005 — Bratislava"
+    }
   },
   "director": {
     "name": "Ján Ďurovčík",
-    "role": "Director & Choreographer",
-    "bio": [
-      "Ján Ďurovčík is an internationally acclaimed Slovak choreographer and director, celebrated for his distinctive style and powerful stage language. A graduate of the Academy of Performing Arts in Bratislava and the Institute for Dance in Antwerp, he began his career as a soloist with H.F. Dansetheatre Amsterdam before gaining recognition across Europe, Asia and North America.",
-      "As founder and artistic director of the Slovak Dance Theatre, he has brought Slovak contemporary dance to international stages. His signature works include The Firebird, Rasputin, Carmen and Richard III, alongside hit musicals such as Jesus Christ Superstar, Romeo and Juliet, Saturday Night Fever and The Eighth Continent — Slovakia's most successful musical, seen by over 400,000 spectators.",
-      "A Crystal Wing Award laureate, Ďurovčík has collaborated with the Slovak National Theatre, Prague State Opera, Opera Graz and Tokyo Metropolitan City Ballet. As curator of the Chorea Festival, he continues to connect Slovak audiences with world-class ballet and contemporary dance."
-    ],
-    "photo": "/assets/photos/durovcik.webp",
-    "photo2": "/assets/photos/durovcik-2.webp"
+    "role": {
+      "sk": "Režisér a choreograf",
+      "en": "Director & Choreographer"
+    },
+    "bio": {
+      "sk": [
+        "Ján Ďurovčík je medzinárodne uznávaný slovenský choreograf a režisér, známy osobitým štýlom a silným javiskovým jazykom. Absolvoval Vysokú školu múzických umení v Bratislave a Inštitút pre tanec v Antverpách. Kariéru začal ako sólista H.F. Dansetheatre Amsterdam a neskôr si získal uznanie v Európe, Ázii aj Severnej Amerike.",
+        "Ako zakladateľ a umelecký riaditeľ Slovenského divadla tanca priviedol slovenský súčasný tanec na medzinárodné javiská. K jeho charakteristickým dielam patria Vták Ohnivák, Rasputin, Carmen a Richard III., ako aj úspešné muzikály Jesus Christ Superstar, Rómeo a Júlia, Horúčka sobotňajšej noci a Ôsmy svetadiel — najúspešnejší slovenský muzikál, ktorý videlo viac ako 400 000 divákov.",
+        "Laureát ceny Krištáľové krídlo spolupracoval so Slovenským národným divadlom, Štátnou operou v Prahe, Operou Graz a Tokyo Metropolitan City Ballet. Ako kurátor festivalu Chorea naďalej prináša slovenskému publiku balet a súčasný tanec svetovej úrovne."
+      ],
+      "en": [
+        "Ján Ďurovčík is an internationally acclaimed Slovak choreographer and director, celebrated for his distinctive style and powerful stage language. A graduate of the Academy of Performing Arts in Bratislava and the Institute for Dance in Antwerp, he began his career as a soloist with H.F. Dansetheatre Amsterdam before gaining recognition across Europe, Asia and North America.",
+        "As founder and artistic director of the Slovak Dance Theatre, he has brought Slovak contemporary dance to international stages. His signature works include The Firebird, Rasputin, Carmen and Richard III, alongside hit musicals such as Jesus Christ Superstar, Romeo and Juliet, Saturday Night Fever and The Eighth Continent — Slovakia's most successful musical, seen by over 400,000 spectators.",
+        "A Crystal Wing Award laureate, Ďurovčík has collaborated with the Slovak National Theatre, Prague State Opera, Opera Graz and Tokyo Metropolitan City Ballet. As curator of the Chorea Festival, he continues to connect Slovak audiences with world-class ballet and contemporary dance."
+      ]
+    },
+    "photo": "/assets/photos/durovcik-main.webp",
+    "photo2": "/assets/photos/durovcik-2.webp",
+    "photoW": 780,
+    "photoH": 470
   },
   "contact": {
-    "eyebrow": "Contact",
-    "heading": "Performances, bookings, partnerships",
-    "body": "For inquiries about performances, bookings or partnerships, please get in touch. We reply within one working day.",
+    "eyebrow": {
+      "sk": "Kontakt",
+      "en": "Contact"
+    },
+    "heading": {
+      "sk": "Predstavenia, booking, <em>partnerstvá</em>",
+      "en": "Performances, bookings, <em>partnerships</em>"
+    },
+    "body": {
+      "sk": "S otázkami k predstaveniam, bookingu alebo partnerstvám sa nám ozvite. Odpovieme do jedného pracovného dňa.",
+      "en": "For inquiries about performances, bookings or partnerships, please get in touch. We reply within one working day."
+    },
     "person": "Soňa Tatić",
     "phone": "+421 902 360 707",
     "phoneHref": "+421902360707",
-    "email": "info@sdt.sk",
-    "_emailNote": "TODO — na sdt.sk je e-mail skrytý cez Cloudflare ochranu, doplň skutočnú adresu.",
+    "email": "sdt@sdt.sk",
     "photo": "/assets/photos/contact-stage.webp",
     "address": {
       "full": "Pribinova 25, 811 09 Bratislava - Staré Mesto, Slovakia",
-      "lines": [
-        "Pribinova 25",
-        "811 09 Bratislava – Staré Mesto",
-        "Slovakia"
-      ]
-    }
+      "lines": {
+        "sk": [
+          "Pribinova 25",
+          "811 09 Bratislava – Staré Mesto",
+          "Slovensko"
+        ],
+        "en": [
+          "Pribinova 25",
+          "811 09 Bratislava – Staré Mesto",
+          "Slovakia"
+        ]
+      }
+    },
+    "photoAlt": {
+      "sk": "Súbor na javisku",
+      "en": "The company on stage"
+    },
+    "photoCap": {
+      "sk": "Slovenské divadlo tanca — na javisku",
+      "en": "Slovak Dance Theatre — on stage"
+    },
+    "email2": "produkcia@sdt.sk"
   },
   "_dancersNote": "Bio prevzate z podstranok sdt.sk/dancers/* cez automaticky prepis - formulacie skontroluj oproti originalu. Fotky su zmensene na 300x300 a prekomprimovane (285 kB -> 88 kB za vsetkych 23).",
   "dancers": [
     {
       "name": "Marianna Pauliková",
-      "role": "Assistant Choreographer",
-      "group": "Artistic team",
+      "role": {
+        "sk": "Asistentka choreografie",
+        "en": "Assistant Choreographer"
+      },
+      "group": {
+        "sk": "Umelecký tím",
+        "en": "Artistic team"
+      },
       "photo": "/assets/dancers/marianna-paulikova.webp",
       "bio": []
     },
     {
       "name": "Igor Holováč",
-      "role": "Guest Ballet Master",
-      "group": "Ballet masters",
+      "role": {
+        "sk": "Hosťujúci baletný majster",
+        "en": "Guest Ballet Master"
+      },
+      "group": {
+        "sk": "Baletní majstri",
+        "en": "Ballet masters"
+      },
       "photo": "/assets/dancers/igor-holovac.webp",
-      "bio": [
-        "Igor Holováč began classical training at the Košice Conservatory under the Halász family and graduated from the Dance Department in Prague in 1984. He has been with the Ballet of the Slovak National Theatre in Bratislava since 1984 — soloist from 1990, principal dancer from 1993, and a teacher since 2004.",
-        "He appeared as a guest with Laterna Magika in Prague and the State Theatre Ballet in Košice, and studied choreography at the Academy of Performing Arts in Bratislava. His roles span some twenty productions, among them Romeo in Romeo and Juliet. He took second prize at the 1988 National Choreographic Competition and the Philip Morris Flower Award in 1998."
-      ]
+      "bio": {
+        "sk": [
+          "Igor Holováč začal s klasickou prípravou na Konzervatóriu v Košiciach pod vedením rodiny Halászovcov a v roku 1984 absolvoval tanečné štúdium v Prahe. Od roku 1984 pôsobí v Balete Slovenského národného divadla v Bratislave — od roku 1990 ako sólista, od roku 1993 ako prvý sólista a od roku 2004 aj ako pedagóg.",
+          "Hosťoval v Laterne Magike v Prahe a v Balete Štátneho divadla v Košiciach, choreografiu študoval na Vysokej škole múzických umení v Bratislave. Stvárnil približne dvadsať postáv, medzi nimi Rómea v balete Rómeo a Júlia. V roku 1988 získal druhú cenu na Celoštátnej choreografickej súťaži a v roku 1998 ocenenie Philip Morris Flower Award."
+        ],
+        "en": [
+          "Igor Holováč began classical training at the Košice Conservatory under the Halász family and graduated from the Dance Department in Prague in 1984. He has been with the Ballet of the Slovak National Theatre in Bratislava since 1984 — soloist from 1990, principal dancer from 1993, and a teacher since 2004.",
+          "He appeared as a guest with Laterna Magika in Prague and the State Theatre Ballet in Košice, and studied choreography at the Academy of Performing Arts in Bratislava. His roles span some twenty productions, among them Romeo in Romeo and Juliet. He took second prize at the 1988 National Choreographic Competition and the Philip Morris Flower Award in 1998."
+        ]
+      }
     },
     {
       "name": "Adrian Ducin",
-      "role": "Guest Ballet Master",
-      "group": "Ballet masters",
+      "role": {
+        "sk": "Hosťujúci baletný majster",
+        "en": "Guest Ballet Master"
+      },
+      "group": {
+        "sk": "Baletní majstri",
+        "en": "Ballet masters"
+      },
       "photo": "/assets/dancers/adrian-ducin.webp",
-      "bio": [
-        "Adrian Ducin studied at the National Choreographic Lyceum in Chișinău, the Vienna Conservatory, and the Academy of Performing Arts in Bratislava, where he focused on ballet choreography. He joined the Ballet of the Slovak National Theatre in 2002 and has been a soloist since 2008.",
-        "His roles span La Sylphide, The Sleeping Beauty, Swan Lake, La Bayadère and Giselle, alongside contemporary works by Jiří Kylián, Jerome Robbins and George Balanchine. Since 2010 he has created his own choreographies to music by Tchaikovsky, Bach, Mozart and Chopin, including Unlike for Fashion Ballet in 2022 with designer Pavol Dendis."
-      ]
+      "bio": {
+        "sk": [
+          "Adrian Ducin študoval na Národnom choreografickom lýceu v Kišiňove, na Konzervatóriu vo Viedni a na Vysokej škole múzických umení v Bratislave, kde sa zameral na baletnú choreografiu. Do Baletu Slovenského národného divadla nastúpil v roku 2002, od roku 2008 je sólistom.",
+          "Jeho repertoár zahŕňa Sylfidu, Šípkovú Ruženku, Labutie jazero, Bajadéru a Giselle, ako aj súčasné diela Jiřího Kyliána, Jeromea Robbinsa a Georgea Balanchina. Od roku 2010 tvorí vlastné choreografie na hudbu Čajkovského, Bacha, Mozarta a Chopina, napríklad Unlike pre Fashion Ballet v roku 2022 s dizajnérom Pavlom Dendisom."
+        ],
+        "en": [
+          "Adrian Ducin studied at the National Choreographic Lyceum in Chișinău, the Vienna Conservatory, and the Academy of Performing Arts in Bratislava, where he focused on ballet choreography. He joined the Ballet of the Slovak National Theatre in 2002 and has been a soloist since 2008.",
+          "His roles span La Sylphide, The Sleeping Beauty, Swan Lake, La Bayadère and Giselle, alongside contemporary works by Jiří Kylián, Jerome Robbins and George Balanchine. Since 2010 he has created his own choreographies to music by Tchaikovsky, Bach, Mozart and Chopin, including Unlike for Fashion Ballet in 2022 with designer Pavol Dendis."
+        ]
+      }
     },
     {
       "name": "Klaudia Brieška – Görözđös",
-      "role": "Guest Ballet Master",
-      "group": "Ballet masters",
+      "role": {
+        "sk": "Hosťujúca baletná majsterka",
+        "en": "Guest Ballet Master"
+      },
+      "group": {
+        "sk": "Baletní majstri",
+        "en": "Ballet masters"
+      },
       "photo": "/assets/dancers/klaudia-brieska-gorozdos.webp",
-      "bio": [
-        "Klaudia Brieška – Görözđös trained at the Eva Jaczová Dance Conservatory in Bratislava, took her BA at the Palucca Hochschule in Dresden and her MA at the Academy of Performing Arts in Bratislava. She danced with Zürich Ballet from 2012 and the Royal Ballet of Flanders from 2014, and has been with the Ballet of the Slovak National Theatre since 2016, as demi-soloist since 2017.",
-        "Her repertoire spans classical and neoclassical work, including Juliet in Romeo and Juliet, the Gypsy Women in The Brothers Karamazov and the Queen of the Night in BESS – Tribute to Rudolf Laban. She has performed works by John Cranko, Christian Spuck, George Balanchine and Kurt Jooss in Swan Lake, Onegin, Serenade and The Green Table."
-      ]
+      "bio": {
+        "sk": [
+          "Klaudia Brieška – Görözđös študovala na Tanečnom konzervatóriu Evy Jaczovej v Bratislave, bakalársky titul získala na Palucca Hochschule v Drážďanoch a magisterský na Vysokej škole múzických umení v Bratislave. Od roku 2012 tancovala v Zürich Ballet, od roku 2014 v Royal Ballet of Flanders a od roku 2016 je členkou Baletu Slovenského národného divadla, od roku 2017 ako demisólistka.",
+          "Jej repertoár zahŕňa klasické aj neoklasické diela — napríklad Júliu v Rómeovi a Júlii, Cigánky v Bratoch Karamazovovcoch či Kráľovnú noci v inscenácii BESS – Pocta Rudolfovi Labanovi. Tancovala v dielach Johna Cranka, Christiana Spucka, Georgea Balanchina a Kurta Joossa v Labuťom jazere, Oneginovi, Serenáde a Zelenom stole."
+        ],
+        "en": [
+          "Klaudia Brieška – Görözđös trained at the Eva Jaczová Dance Conservatory in Bratislava, took her BA at the Palucca Hochschule in Dresden and her MA at the Academy of Performing Arts in Bratislava. She danced with Zürich Ballet from 2012 and the Royal Ballet of Flanders from 2014, and has been with the Ballet of the Slovak National Theatre since 2016, as demi-soloist since 2017.",
+          "Her repertoire spans classical and neoclassical work, including Juliet in Romeo and Juliet, the Gypsy Women in The Brothers Karamazov and the Queen of the Night in BESS – Tribute to Rudolf Laban. She has performed works by John Cranko, Christian Spuck, George Balanchine and Kurt Jooss in Swan Lake, Onegin, Serenade and The Green Table."
+        ]
+      }
     },
     {
       "name": "Lorenzo Alba",
-      "role": "Dancer",
-      "group": "Company",
+      "role": {
+        "sk": "Tanečník",
+        "en": "Dancer"
+      },
+      "group": {
+        "sk": "Súbor",
+        "en": "Company"
+      },
       "photo": "/assets/dancers/lorenzo-alba.webp",
-      "bio": [
-        "Lorenzo Alba trained at the Mea Danza private school and graduated from Istituto Ruggero Settimo in Caltanissetta. He completed professional training in Berlin, earning his diploma from DART DSP in 2022, and performed at the Pfefferberg Theatre in productions including Aisling and Solo for Real, as well as the interdisciplinary Calamita Effect project.",
-        "He took first place for contemporary solo at Danza in Val di Adige and third for modern solo at the Etna Grand Prix in 2020. Before joining the company he was a soloist with Arabesque Dance Company in Sofia, appearing in The Secret of Dante as Virgilio, Infinity and Part Of. With Slovak Dance Theatre he performs in AMADEUS and takes the title role of Quasimodo in The Hunchback of Notre Dame."
-      ]
+      "bio": {
+        "sk": [
+          "Lorenzo Alba sa školil na súkromnej škole Mea Danza a absolvoval Istituto Ruggero Settimo v Caltanissette. Profesionálnu prípravu dokončil v Berlíne, kde v roku 2022 získal diplom na DART DSP, a vystupoval v divadle Pfefferberg v inscenáciách Aisling a Solo for Real aj v interdisciplinárnom projekte Calamita Effect.",
+          "V roku 2020 získal prvé miesto za súčasné sólo na súťaži Danza in Val di Adige a tretie miesto za moderné sólo na Etna Grand Prix. Pred príchodom do súboru bol sólistom Arabesque Dance Company v Sofii, kde účinkoval v inscenáciách The Secret of Dante (ako Vergílius), Infinity a Part Of. V Slovenskom divadle tanca tancuje v inscenácii AMADEUS a stvárňuje titulnú postavu Quasimoda vo Zvonárovi u Matky Božej."
+        ],
+        "en": [
+          "Lorenzo Alba trained at the Mea Danza private school and graduated from Istituto Ruggero Settimo in Caltanissetta. He completed professional training in Berlin, earning his diploma from DART DSP in 2022, and performed at the Pfefferberg Theatre in productions including Aisling and Solo for Real, as well as the interdisciplinary Calamita Effect project.",
+          "He took first place for contemporary solo at Danza in Val di Adige and third for modern solo at the Etna Grand Prix in 2020. Before joining the company he was a soloist with Arabesque Dance Company in Sofia, appearing in The Secret of Dante as Virgilio, Infinity and Part Of. With Slovak Dance Theatre he performs in AMADEUS and takes the title role of Quasimodo in The Hunchback of Notre Dame."
+        ]
+      }
     },
     {
       "name": "Gennaro Desiderio",
-      "role": "Dancer",
-      "group": "Company",
+      "role": {
+        "sk": "Tanečník",
+        "en": "Dancer"
+      },
+      "group": {
+        "sk": "Súbor",
+        "en": "Company"
+      },
       "photo": "/assets/dancers/gennaro-desiderio.webp",
-      "bio": [
-        "Gennaro Desiderio trained at I.S.I.S. Boccioni Palizzi in Naples, completing his studies in 2021 with top marks, while studying simultaneously at the Mary Fusco Foundation in classical ballet, modern, contemporary and Spanish dance.",
-        "His preparation continued at the Bavarian Ballet Academy in Munich. With Ballet Arabesque in Sofia he danced principal roles including Kai in The Snow Queen, the Nutcracker and Prince in The Nutcracker, and solos in Carmina Burana and Thus Spoke Zarathustra. He has appeared as a guest with the State Opera Plovdiv and holds scholarships from the Royal Ballet School in London and Palucca University of Dance in Dresden. At SDT he is the Captain in The Hunchback of Notre Dame and dances in AMADEUS."
-      ]
-    },
-    {
-      "name": "Giulia Fattorini",
-      "role": "Dancer",
-      "group": "Company",
-      "photo": "/assets/dancers/giulia-fattorini.webp",
-      "bio": [
-        "Giulia Fattorini began dancing as a child through rhythmic gymnastics, earning the title of Italian National Champion in 2014 and later Campionessa assoluta Italiana. She trained from 2015 at the Accademia Teatro alla Scala in Milan under Federico Olivieri, then at the European School of Ballet in Amsterdam, before joining Ballet de Barcelona.",
-        "In Barcelona she created leading roles including Narcisa, the principal female part in Balanchine's Together, principal roles in Swan Lake and a solo in the Waltz of the Flowers from The Nutcracker. At SDT she performs in Cigáni idú do neba and dances Esmeralda in The Hunchback of Notre Dame."
-      ]
+      "bio": {
+        "sk": [
+          "Gennaro Desiderio študoval na I.S.I.S. Boccioni Palizzi v Neapole, ktoré v roku 2021 ukončil s najvyšším hodnotením, a súbežne na Mary Fusco Foundation klasický balet, moderný, súčasný a španielsky tanec.",
+          "V príprave pokračoval na Bavorskej baletnej akadémii v Mníchove. V Balete Arabesque v Sofii tancoval hlavné úlohy — Kaja v Snehovej kráľovnej, Luskáčika a Princa v Luskáčikovi — a sólové party v Carmine Burane a Tak vravel Zarathustra. Hosťoval v Štátnej opere Plovdiv a je držiteľom štipendií Royal Ballet School v Londýne a Palucca University of Dance v Drážďanoch. V SDT stvárňuje Kapitána vo Zvonárovi u Matky Božej a tancuje v inscenácii AMADEUS."
+        ],
+        "en": [
+          "Gennaro Desiderio trained at I.S.I.S. Boccioni Palizzi in Naples, completing his studies in 2021 with top marks, while studying simultaneously at the Mary Fusco Foundation in classical ballet, modern, contemporary and Spanish dance.",
+          "His preparation continued at the Bavarian Ballet Academy in Munich. With Ballet Arabesque in Sofia he danced principal roles including Kai in The Snow Queen, the Nutcracker and Prince in The Nutcracker, and solos in Carmina Burana and Thus Spoke Zarathustra. He has appeared as a guest with the State Opera Plovdiv and holds scholarships from the Royal Ballet School in London and Palucca University of Dance in Dresden. At SDT he is the Captain in The Hunchback of Notre Dame and dances in AMADEUS."
+        ]
+      }
     },
     {
       "name": "Matej Huťka",
-      "role": "Dancer",
-      "group": "Company",
+      "role": {
+        "sk": "Tanečník",
+        "en": "Dancer"
+      },
+      "group": {
+        "sk": "Súbor",
+        "en": "Company"
+      },
       "photo": "/assets/dancers/matej-hutka.webp",
-      "bio": [
-        "A graduate of the dance programme at the Ján Levoslav Bella Conservatory in Banská Bystrica, Matej Huťka is a dancer with wide stylistic experience for whom dance is both profession and passion.",
-        "With the Ballet of the State Opera in Banská Bystrica he developed roles including Benvolio in Romeo and Juliet, Karol in Cries into Silence, Theo Sarapo and Little Louis in Edith Piaf, and Stepan Oblonsky in Anna Karenina. At SDT he takes on the demanding role of the priest Frollo in The Hunchback of Notre Dame, Don Giovanni in AMADEUS, and appears in Cigáni idú do neba."
-      ]
-    },
-    {
-      "name": "Emma Perez",
-      "role": "Dancer",
-      "group": "Company",
-      "photo": "/assets/dancers/emma-perez.webp",
-      "bio": [
-        "Emma Rhodes Perez is an American dancer from New Orleans. She trained at the New Orleans Ballet Theater and the New Orleans Center for Creative Arts, and earned her BFA from the SUNY Purchase Conservatory of Dance, with further training at the Joffrey Ballet School, Alvin Ailey Professional Division, Springboard and the B12 Research Festival in Berlin.",
-        "She has performed Balanchine works and contemporary choreography by Antonin Rioche and Rosie Herrera, and danced with Tanzcompagnie Volkstheater Rostock. She joined Slovak Dance Theatre for the 2025–2026 season, appearing in Cigáni idú do neba, The Hunchback of Notre Dame and Ďurovčík's Romeo and Juliet. As a choreographer her works include Three Ringed Circus, A Rainbow Bridge at the End of the World and Phantasmagoria."
-      ]
+      "bio": {
+        "sk": [
+          "Matej Huťka je absolventom tanečného odboru Konzervatória Jána Levoslava Bellu v Banskej Bystrici a tanečníkom so širokou štýlovou skúsenosťou, pre ktorého je tanec profesiou aj vášňou.",
+          "V Balete Štátnej opery v Banskej Bystrici stvárnil napríklad Benvolia v Rómeovi a Júlii, Karola vo Výkrikoch do ticha, Thea Sarapa a malého Louisa v Edith Piaf či Štepana Oblonského v Anne Kareninovej. V SDT stvárňuje náročnú úlohu kňaza Frolla vo Zvonárovi u Matky Božej, Dona Giovanniho v inscenácii AMADEUS a účinkuje v Cigáni idú do neba."
+        ],
+        "en": [
+          "A graduate of the dance programme at the Ján Levoslav Bella Conservatory in Banská Bystrica, Matej Huťka is a dancer with wide stylistic experience for whom dance is both profession and passion.",
+          "With the Ballet of the State Opera in Banská Bystrica he developed roles including Benvolio in Romeo and Juliet, Karol in Cries into Silence, Theo Sarapo and Little Louis in Edith Piaf, and Stepan Oblonsky in Anna Karenina. At SDT he takes on the demanding role of the priest Frollo in The Hunchback of Notre Dame, Don Giovanni in AMADEUS, and appears in Cigáni idú do neba."
+        ]
+      }
     },
     {
       "name": "Amelia Thompson",
-      "role": "Dancer",
-      "group": "Company",
+      "role": {
+        "sk": "Tanečníčka",
+        "en": "Dancer"
+      },
+      "group": {
+        "sk": "Súbor",
+        "en": "Company"
+      },
       "photo": "/assets/dancers/amelia-thompson.webp",
-      "bio": [
-        "Amelia — Millie — Thompson is a British dancer who brings considerable professional experience despite her young age, having trained throughout the United Kingdom and completed her studies at the Central School of Ballet in jazz, contemporary, ballet, partnering and acting.",
-        "Her credits include Scottish Ballet's Cinders and English National Ballet's Raymonda, and she gained leading-role experience with Sadler's Wells National Youth Ballet. At SDT she performs in Cigáni idú do neba and dances the Mother in The Hunchback of Notre Dame."
-      ]
+      "bio": {
+        "sk": [
+          "Amelia — Millie — Thompson je britská tanečníčka, ktorá napriek mladému veku prináša bohaté profesionálne skúsenosti. Školila sa po celom Spojenom kráľovstve a štúdium ukončila na Central School of Ballet v odboroch jazz, súčasný tanec, balet, partnering a herectvo.",
+          "Účinkovala v inscenáciách Cinders so Scottish Ballet a Raymonda s English National Ballet a skúsenosti s hlavnými úlohami získala v Sadler's Wells National Youth Ballet. V SDT účinkuje v inscenácii Cigáni idú do neba a tancuje Matku vo Zvonárovi u Matky Božej."
+        ],
+        "en": [
+          "Amelia — Millie — Thompson is a British dancer who brings considerable professional experience despite her young age, having trained throughout the United Kingdom and completed her studies at the Central School of Ballet in jazz, contemporary, ballet, partnering and acting.",
+          "Her credits include Scottish Ballet's Cinders and English National Ballet's Raymonda, and she gained leading-role experience with Sadler's Wells National Youth Ballet. At SDT she performs in Cigáni idú do neba and dances the Mother in The Hunchback of Notre Dame."
+        ]
+      }
     },
     {
       "name": "Raffaele Zarrella",
-      "role": "Dancer",
-      "group": "Company",
+      "role": {
+        "sk": "Tanečník",
+        "en": "Dancer"
+      },
+      "group": {
+        "sk": "Súbor",
+        "en": "Company"
+      },
       "photo": "/assets/dancers/raffaele-zarrella.webp",
-      "bio": [
-        "Raffaele Zarrella is a Sicilian dancer who trained at Teatro San Carlo and the Vienna State Opera Ballet Academy, and graduated from the Académie Princesse Grace in Monaco under Luca Masala. He is a winner and finalist of the Youth America Grand Prix and held scholarships at the Royal Ballet School and the ABT Summer Intensive.",
-        "In Vienna he danced in The Nutcracker, Sylvia and Balanchine works, took the role of Tadzio in Death in Venice, and appeared at galas in Miami, Cannes and Monaco. Before joining SDT he performed with Ballet du Capitole in Toulouse. He now dances principal roles: José in Carmen, the Firebird in Vták Ohnivák, Mercutio in Romeo + Juliet, Captain Phoebus in The Hunchback of Notre Dame and Salieri in AMADEUS."
-      ]
+      "bio": {
+        "sk": [
+          "Raffaele Zarrella je sicílsky tanečník, ktorý študoval na Teatro San Carlo a na Baletnej akadémii Viedenskej štátnej opery a absolvoval Académie Princesse Grace v Monaku pod vedením Lucu Masalu. Je víťazom a finalistom súťaže Youth America Grand Prix a držiteľom štipendií Royal Ballet School a ABT Summer Intensive.",
+          "Vo Viedni tancoval v Luskáčikovi, Sylvii a dielach Georgea Balanchina, stvárnil Tadzia v Smrti v Benátkach a vystupoval na galavečeroch v Miami, Cannes a Monaku. Pred príchodom do SDT pôsobil v Ballet du Capitole v Toulouse. Dnes tancuje hlavné úlohy: Josého v Carmen, Vtáka Ohniváka, Mercutia v Rómeovi + Júlii, kapitána Phoebusa vo Zvonárovi u Matky Božej a Salieriho v inscenácii AMADEUS."
+        ],
+        "en": [
+          "Raffaele Zarrella is a Sicilian dancer who trained at Teatro San Carlo and the Vienna State Opera Ballet Academy, and graduated from the Académie Princesse Grace in Monaco under Luca Masala. He is a winner and finalist of the Youth America Grand Prix and held scholarships at the Royal Ballet School and the ABT Summer Intensive.",
+          "In Vienna he danced in The Nutcracker, Sylvia and Balanchine works, took the role of Tadzio in Death in Venice, and appeared at galas in Miami, Cannes and Monaco. Before joining SDT he performed with Ballet du Capitole in Toulouse. He now dances principal roles: José in Carmen, the Firebird in Vták Ohnivák, Mercutio in Romeo + Juliet, Captain Phoebus in The Hunchback of Notre Dame and Salieri in AMADEUS."
+        ]
+      }
     },
     {
       "name": "Samuel Bojňanský",
-      "role": "Guest Dancer",
-      "group": "Guests",
+      "role": {
+        "sk": "Hosťujúci tanečník",
+        "en": "Guest Dancer"
+      },
+      "group": {
+        "sk": "Hostia",
+        "en": "Guests"
+      },
       "photo": "/assets/dancers/samuel-bojnansky.webp",
       "bio": []
     },
     {
-      "name": "Dávid Bosák",
-      "role": "Guest Dancer",
-      "group": "Guests",
-      "photo": "/assets/dancers/david-bosak.webp",
-      "bio": []
-    },
-    {
       "name": "Dominik Dolník",
-      "role": "Guest Dancer",
-      "group": "Guests",
+      "role": {
+        "sk": "Hosťujúci tanečník",
+        "en": "Guest Dancer"
+      },
+      "group": {
+        "sk": "Hostia",
+        "en": "Guests"
+      },
       "photo": "/assets/dancers/dominik-dolnik.webp",
       "bio": []
     },
     {
       "name": "Nina Ďuríková",
-      "role": "Guest Dancer",
-      "group": "Guests",
+      "role": {
+        "sk": "Hosťujúca tanečníčka",
+        "en": "Guest Dancer"
+      },
+      "group": {
+        "sk": "Hostia",
+        "en": "Guests"
+      },
       "photo": "/assets/dancers/nina-durikova.webp",
       "bio": []
     },
     {
       "name": "Miroslav Figura",
-      "role": "Guest Dancer",
-      "group": "Guests",
+      "role": {
+        "sk": "Hosťujúci tanečník",
+        "en": "Guest Dancer"
+      },
+      "group": {
+        "sk": "Hostia",
+        "en": "Guests"
+      },
       "photo": "/assets/dancers/miroslav-figura.webp",
       "bio": []
     },
     {
       "name": "Katarína Kaštierová",
-      "role": "Guest Dancer",
-      "group": "Guests",
+      "role": {
+        "sk": "Hosťujúca tanečníčka",
+        "en": "Guest Dancer"
+      },
+      "group": {
+        "sk": "Hostia",
+        "en": "Guests"
+      },
       "photo": "/assets/dancers/katarina-kastierova.webp",
       "bio": []
     },
     {
       "name": "Nataša Okrucká",
-      "role": "Guest Dancer",
-      "group": "Guests",
+      "role": {
+        "sk": "Hosťujúca tanečníčka",
+        "en": "Guest Dancer"
+      },
+      "group": {
+        "sk": "Hostia",
+        "en": "Guests"
+      },
       "photo": "/assets/dancers/natasa-okrucka.webp",
       "bio": []
     },
     {
       "name": "Kristína Puterková",
-      "role": "Guest Dancer",
-      "group": "Guests",
+      "role": {
+        "sk": "Hosťujúca tanečníčka",
+        "en": "Guest Dancer"
+      },
+      "group": {
+        "sk": "Hostia",
+        "en": "Guests"
+      },
       "photo": "/assets/dancers/kristina-puterkova.webp",
       "bio": []
     },
     {
       "name": "Tamara Semanová",
-      "role": "Guest Dancer",
-      "group": "Guests",
+      "role": {
+        "sk": "Hosťujúca tanečníčka",
+        "en": "Guest Dancer"
+      },
+      "group": {
+        "sk": "Hostia",
+        "en": "Guests"
+      },
       "photo": "/assets/dancers/tamara-semanova.webp",
       "bio": []
     },
     {
       "name": "Sofia Stašková",
-      "role": "Guest Dancer",
-      "group": "Guests",
+      "role": {
+        "sk": "Hosťujúca tanečníčka",
+        "en": "Guest Dancer"
+      },
+      "group": {
+        "sk": "Hostia",
+        "en": "Guests"
+      },
       "photo": "/assets/dancers/sofia-staskova.webp",
       "bio": []
     },
     {
       "name": "Alica Szilágyiová",
-      "role": "Guest Dancer",
-      "group": "Guests",
+      "role": {
+        "sk": "Hosťujúca tanečníčka",
+        "en": "Guest Dancer"
+      },
+      "group": {
+        "sk": "Hostia",
+        "en": "Guests"
+      },
       "photo": "/assets/dancers/alica-szilagyiova.webp",
-      "bio": []
-    },
-    {
-      "name": "Filip Tóth",
-      "role": "Guest Dancer",
-      "group": "Guests",
-      "photo": "/assets/dancers/filip-toth.webp",
       "bio": []
     }
   ],
   "popup": {
     "enabled": true,
     "production": "swan-lake",
-    "eyebrow": "New",
-    "title": "Swan Lake",
-    "body": "The most anticipated premiere of the year. A modern version of the most famous ballet of all time.",
-    "cta": "Tickets",
-    "url": "https://www.ticketportal.sk/event/Labutie-jazero",
+    "eyebrow": {
+      "sk": "Novinka",
+      "en": "New"
+    },
+    "title": {
+      "sk": "Labutie jazero",
+      "en": "Swan Lake"
+    },
+    "body": {
+      "sk": "Najočakávanejšia premiéra roka. Moderná verzia najslávnejšieho baletu všetkých čias.",
+      "en": "The most anticipated premiere of the year. A modern version of the most famous ballet of all time."
+    },
+    "cta": {
+      "sk": "Vstupenky",
+      "en": "Tickets"
+    },
+    "url": "https://www.ticketportal.sk/event/Labutie-jazero?imedium=search",
     "delayMs": 6000,
     "dismissDays": 7
   },
   "hero": {
-    "cue": "Discover"
+    "cue": {
+      "sk": "Objavte",
+      "en": "Discover"
+    }
   },
   "dancersPhoto": "/assets/photos/solo-stage.webp",
   "repertoirePhoto": "/assets/photos/ensemble-sofa.webp",
   "gallery": {
-    "eyebrow": "The company",
-    "heading": "On stage, and in the room before it",
-    "body": "Photographs from performances and rehearsals in Bratislava and on tour.",
+    "eyebrow": {
+      "sk": "Súbor",
+      "en": "The company"
+    },
+    "heading": {
+      "sk": "Na javisku aj v sále pred ním",
+      "en": "On stage, and in the room before it"
+    },
+    "body": {
+      "sk": "Fotografie z predstavení a skúšok v Bratislave aj na turné.",
+      "en": "Photographs from performances and rehearsals in Bratislava and on tour."
+    },
     "items": [
       {
         "src": "/assets/photos/g-ensemble.webp",
-        "alt": "The ensemble in performance",
+        "alt": {
+          "sk": "Súbor počas predstavenia",
+          "en": "The ensemble in performance"
+        },
         "w": 1000,
         "h": 1251,
-        "caption": "Ensemble"
+        "caption": {
+          "sk": "Súbor",
+          "en": "Ensemble"
+        }
       },
       {
         "src": "/assets/photos/g-leap.webp",
-        "alt": "A dancer mid-leap under stage light",
+        "alt": {
+          "sk": "Tanečník vo výskoku v svetle reflektora",
+          "en": "A dancer mid-leap under stage light"
+        },
         "w": 1200,
         "h": 674,
-        "caption": "Swan Lake"
+        "caption": {
+          "sk": "Labutie jazero",
+          "en": "Swan Lake"
+        }
       },
       {
         "src": "/assets/photos/g-flight.webp",
-        "alt": "A dancer in flight above the stage",
+        "alt": {
+          "sk": "Tanečník v letku nad javiskom",
+          "en": "A dancer in flight above the stage"
+        },
         "w": 900,
         "h": 1125,
-        "caption": "The Firebird"
+        "caption": {
+          "sk": "Vták Ohnivák",
+          "en": "The Firebird"
+        }
       },
       {
         "src": "/assets/photos/g-sofa.webp",
-        "alt": "The company in a tableau",
+        "alt": {
+          "sk": "Súbor v živom obraze",
+          "en": "The company in a tableau"
+        },
         "w": 900,
         "h": 600,
-        "caption": "Amadeus"
+        "caption": {
+          "sk": "Amadeus",
+          "en": "Amadeus"
+        }
       },
       {
         "src": "/assets/photos/g-solo.webp",
-        "alt": "A soloist on a lit stage",
+        "alt": {
+          "sk": "Sólista na osvetlenom javisku",
+          "en": "A soloist on a lit stage"
+        },
         "w": 900,
         "h": 675,
-        "caption": "Solo"
+        "caption": {
+          "sk": "Sólo",
+          "en": "Solo"
+        }
       }
     ]
-  }
+  },
+  "languages": [
+    "sk",
+    "en"
+  ]
 }
