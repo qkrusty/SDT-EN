@@ -69,6 +69,23 @@
     items.forEach(function (el) { io.observe(el); });
   })();
 
+  /* ---------- Zo zákulisia: Vimeo sa vloží až po kliknutí ---------- */
+  $$("[data-video-facade]").forEach(function (box) {
+    var btn = $("button", box);
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var f = document.createElement("iframe");
+      f.src = box.dataset.videoFacade;
+      f.allow = "autoplay; fullscreen; picture-in-picture";
+      f.allowFullscreen = true;
+      f.title = btn.getAttribute("aria-label") || "Video";
+      f.loading = "eager";
+      box.classList.add("is-playing");
+      box.appendChild(f);
+      btn.remove();
+    });
+  });
+
   /* ---------- bod 2: čísla v „About us“ sa dopočítajú ---------- */
   (function counters() {
     var nums = $$("[data-count]");

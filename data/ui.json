@@ -366,5 +366,49 @@
   "keyVisual": {
     "sk": "Plagát inscenácie",
     "en": "Production poster"
+  },
+  "navAbout": {
+    "sk": "O nás",
+    "en": "About"
+  },
+  "learnMore": {
+    "sk": "Dozvedieť sa viac",
+    "en": "Learn more"
+  },
+  "aboutTitle": {
+    "sk": "O nás",
+    "en": "About us"
+  },
+  "aboutDesc": {
+    "sk": "Príbeh, poslanie a repertoár Slovenského divadla tanca.",
+    "en": "The story, mission and repertoire of the Slovak Dance Theatre."
+  },
+  "storyLabel": {
+    "sk": "Náš príbeh",
+    "en": "Our story"
+  },
+  "missionLabel": {
+    "sk": "Poslanie",
+    "en": "Our mission"
+  },
+  "repSdtLabel": {
+    "sk": "Repertoár SDT",
+    "en": "SDT repertoire"
+  },
+  "latestLabel": {
+    "sk": "Najnovšie",
+    "en": "Latest work"
+  },
+  "seeCalendar": {
+    "sk": "Pozrieť kalendár",
+    "en": "See the calendar"
+  },
+  "meetDancers": {
+    "sk": "Spoznajte tanečníkov",
+    "en": "Meet the dancers"
+  },
+  "playVideo": {
+    "sk": "Prehrať video",
+    "en": "Play video"
   }
 }

@@ -122,6 +122,7 @@ function nav(current) {
       <span>${esc(t("logoSub"))}</span>
     </a>
     <div class="nav-links" id="nav-links">
+      ${link("/about/", t("navAbout"), "about")}
       ${link("/repertoire/", t("navRepertoire"), "repertoire")}
       ${link("/calendar/", t("navCalendar"), "calendar")}
       ${link("/dancers/", t("navDancers"), "dancers")}
@@ -227,6 +228,33 @@ function mapBlock() {
     <span class="addr-badge">Pribinova 25</span>
   </a>
 </div>`;
+}
+
+/* Zo zákulisia — veľké video. Vimeo sa načíta až po kliknutí (fasáda s plagátom),
+   takže stránka nesťahuje prehrávač ani cookies tretej strany vopred. */
+function btsSection() {
+  const b = site.bts;
+  if (!b) return "";
+  const src = `https://player.vimeo.com/video/${b.vimeo}?autoplay=1&dnt=1&title=0&byline=0&portrait=0&color=ffffff`;
+  return `
+<section class="bts" data-reveal>
+  <div class="bts-marquee" aria-hidden="true"><div>${Array(6).fill(`<span>${esc(b.marquee)}</span>`).join("")}</div></div>
+  <div class="wrap bts-in">
+    <div class="bts-head">
+      <p class="label">${esc(b.label)}</p>
+      <h2 class="display">${b.heading}</h2>
+      <p class="lede">${esc(b.body)}</p>
+    </div>
+    <div class="bts-frame" data-video-facade="${esc(src)}">
+      <button type="button" class="bts-play" aria-label="${esc(t("playVideo"))}">
+        <img src="${esc(b.poster)}" alt="" width="1600" height="900" loading="lazy" decoding="async">
+        <span class="bts-veil"></span>
+        <span class="trailer-play">${ICON.play}</span>
+        <span class="bts-time">${esc(b.duration)}</span>
+      </button>
+    </div>
+  </div>
+</section>`;
 }
 
 function footer() {
@@ -340,10 +368,13 @@ ${popup()}
 /* ---------- stránky ---------- */
 function pageHome() {
   // bod 1 — Swan Lake patrí do stredu oblúka
-  const featured = productions.filter((p) => p.featured && !p.archived).slice(0, 5);
+  let featured = productions.filter((p) => p.featured && !p.archived).slice(0, 5);
   // Swan Lake patrí do stredu — pri párnom počte na ľavú stredovú pozíciu
   const swanAt = featured.findIndex((p) => p.slug === "swan-lake");
   if (swanAt > -1) featured.splice(Math.floor((featured.length - 1) / 2), 0, featured.splice(swanAt, 1)[0]);
+  // archívne tituly po krajoch oblúka
+  const arch = productions.filter((p) => p.archived);
+  if (arch.length >= 2) featured = [arch[0], ...featured, arch[1]];
   const a = site.about;
   const d = site.director;
   const h = site.hero;
@@ -362,7 +393,7 @@ function pageHome() {
 </section>
 
 <section class="arc-sec" data-reveal>
-  <div class="arc-wrap">
+  <div class="arc-wrap w${featured.length}">
     <div class="arc n${featured.length}" id="home-arc" data-rail>
       ${featured.map((p) => posterCard(p, p.slug === "swan-lake")).join("\n      ")}
     </div>
@@ -385,6 +416,7 @@ function pageHome() {
       <div class="stack">
         ${a.body.map((x) => `<p class="lede">${esc(x)}</p>`).join("\n        ")}
       </div>
+      <a class="btn btn-dark btn-more" href="/about/"><span>${esc(t("learnMore"))}</span>${ICON.right}</a>
       <div class="stats">
         ${a.stats
           .map(
@@ -400,6 +432,9 @@ function pageHome() {
         <figure class="figure square" style="margin:0">
           <img src="${esc(a.photo)}" alt="${esc(a.photoAlt)}" width="1100" height="1100" loading="lazy" decoding="async">
         </figure>
+        ${a.photo2 ? `<figure class="about-pop" data-lit style="margin:0">
+          <img src="${esc(a.photo2)}" alt="${esc(a.photo2Alt)}" width="1200" height="800" loading="lazy" decoding="async">
+        </figure>` : ""}
       </div>
       <p class="framed-cap">${esc(a.photoCap)}</p>
     </div>
@@ -424,6 +459,8 @@ function pageHome() {
 </section>
 
 <div class="divider" aria-hidden="true"><i></i><b></b><i></i></div>
+
+${btsSection()}
 
 <section class="section wrap" data-reveal>
   <div class="split">
@@ -455,6 +492,104 @@ ${contactSection()}`;
     description: site.description,
     current: "home",
     path: "/",
+    body,
+  });
+}
+
+function pageAbout() {
+  const a = site.about;
+  const ap = site.aboutPage;
+  const latest = (ap.latestLinks || []).map((s) => bySlug[s]).filter(Boolean);
+  const active = productions.filter((p) => !p.archived);
+  const body = `
+<section class="about-hero">
+  <div class="media"><img src="${esc(ap.heroImage)}" alt="" width="1600" height="1007" fetchpriority="high"></div>
+  <div class="scrim"></div>
+  <div class="wrap about-hero-in">
+    <p class="label">${esc(t("aboutTitle"))}</p>
+    <h1 class="display">${a.heading}</h1>
+    <p class="about-lede">${esc(ap.lede)}</p>
+  </div>
+</section>
+
+<section class="section wrap" data-reveal>
+  <div class="split top">
+    <div>
+      <div class="sechead"><p class="label">${esc(t("storyLabel"))}</p></div>
+      <div class="stack">
+        ${[...a.body, ...ap.story].map((x) => `<p class="lede">${esc(x)}</p>`).join("\n        ")}
+      </div>
+    </div>
+    <div class="about-side">
+      <div class="stats">
+        ${a.stats
+          .map(
+            (st, i) =>
+              `<div class="stat" data-reveal style="--d:${i * 110}ms"><b data-count="${esc(st.value)}">${esc(st.value)}</b><span>${esc(st.label)}</span></div>`
+          )
+          .join("\n        ")}
+      </div>
+      <figure class="about-side-photo" data-lit style="margin:0">
+        <img src="${esc(a.photo2)}" alt="${esc(a.photo2Alt)}" width="1200" height="800" loading="lazy" decoding="async">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="about-mosaic wrap" data-reveal>
+  ${ap.photos
+    .map(
+      (ph, i) => `<figure class="am${i + 1}" data-reveal data-lit style="--d:${i * 90}ms">
+    <img src="${esc(ph.src)}" alt="${esc(ph.alt)}" width="${ph.w}" height="${ph.h}" loading="lazy" decoding="async">
+  </figure>`
+    )
+    .join("\n  ")}
+</section>
+
+<section class="mission band" data-reveal>
+  <div class="wrap">
+    <p class="label">${esc(t("missionLabel"))}</p>
+    <blockquote class="mission-q">${esc(ap.mission)}</blockquote>
+  </div>
+</section>
+
+<section class="section wrap" data-reveal>
+  <div class="split top">
+    <div>
+      <div class="sechead"><p class="label">${esc(t("repSdtLabel"))}</p></div>
+      <div class="stack">
+        ${ap.repertoire.map((x) => `<p class="lede">${esc(x)}</p>`).join("\n        ")}
+      </div>
+    </div>
+    <div class="about-reps">
+      ${active.map((p) => posterCard(p)).join("\n      ")}
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true"><i></i><b></b><i></i></div>
+
+<section class="section wrap" data-reveal>
+  <div class="split top">
+    <div>
+      <div class="sechead"><p class="label">${esc(t("latestLabel"))}</p></div>
+      <p class="lede">${esc(ap.latest)}</p>
+      <div class="about-ctas">
+        <a class="btn btn-dark btn-more" href="/calendar/"><span>${esc(t("seeCalendar"))}</span>${ICON.right}</a>
+        <a class="btn btn-line btn-more" href="/dancers/"><span>${esc(t("meetDancers"))}</span>${ICON.right}</a>
+      </div>
+    </div>
+    <div class="about-latest">
+      ${latest.map((p) => posterCard(p)).join("\n      ")}
+    </div>
+  </div>
+</section>
+`;
+  return layout({
+    title: `${t("aboutTitle")} — ${site.name}`,
+    description: t("aboutDesc"),
+    current: "about",
+    path: "/about/",
     body,
   });
 }
@@ -911,6 +1046,7 @@ for (const lg of LANGS) {
   useLang(lg);
   const pages = [
     ["/", pageHome],
+    ["/about/", pageAbout],
     ["/repertoire/", pageRepertoire],
     ["/calendar/", pageCalendar],
     ["/dancers/", pageDancers],

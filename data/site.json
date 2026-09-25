@@ -192,6 +192,11 @@
     "since": {
       "sk": "Od roku 2005 — Bratislava",
       "en": "Est. 2005 — Bratislava"
+    },
+    "photo2": "/assets/about/duet.webp",
+    "photo2Alt": {
+      "sk": "Duet na javisku v protisvetle",
+      "en": "A duet on stage against the light"
     }
   },
   "director": {
@@ -697,5 +702,121 @@
   "languages": [
     "sk",
     "en"
-  ]
+  ],
+  "aboutPage": {
+    "heroImage": "/assets/about/hero.webp",
+    "lede": {
+      "sk": "Súbor súčasného baletu, ktorý v roku 2005 založil Ján Ďurovčík — doma v Bratislave, na javiskách od New Yorku po Peking.",
+      "en": "A contemporary ballet company founded by Ján Ďurovčík in 2005 — at home in Bratislava, on stages from New York to Beijing."
+    },
+    "story": {
+      "sk": [
+        "Počas svojej existencie sme realizovali viac ako 200 predstavení na Slovensku, v Čechách a v mestách strednej Európy. Ako jediné teleso tohto charakteru sme premiérovali autorské dielo Jána Ďurovčíka v Círculo de Bellas Artes v Madride.",
+        "V sezóne 2008/2009 sme sa zúčastnili svetového turné The Firebird World Tour s vystúpeniami v New Yorku, Londýne, Krakove, Amsterdame, Bytome a Antverpách. S príbehom Carmen sme vycestovali aj do New Yorku, Lisabonu, Kanady, Tokia, Ríma, Londýna, Pekingu či Mexico City."
+      ],
+      "en": [
+        "Over the years we have given more than 200 performances in Slovakia, the Czech Republic and cities across Central Europe. As the only company of its kind, we premiered an original work by Ján Ďurovčík at the Círculo de Bellas Artes in Madrid.",
+        "In the 2008/2009 season we took part in The Firebird World Tour, with performances in New York, London, Kraków, Amsterdam, Bytom and Antwerp. With the story of Carmen we have also travelled to New York, Lisbon, Canada, Tokyo, Rome, London, Beijing and Mexico City."
+      ]
+    },
+    "mission": {
+      "sk": "Divadlo umožňuje profesionálny rozvoj tanečníkov, spevákov a hercov. Pracuje na princípe rovnosti tanca s ostatnými divadelnými žánrami a ponúka priestor pre uplatnenie mladým talentom, ktoré majú záujem zdokonaľovať svoju pohybovú kultúru.",
+      "en": "The theatre supports the professional growth of dancers, singers and actors. It works on the principle that dance stands equal to every other theatrical genre, and it gives young talent who want to refine their movement a place to grow."
+    },
+    "repertoire": {
+      "sk": [
+        "Medzi našimi predstaveniami nájdeš napríklad balet Petruška/Vták Ohnivák ako vrcholné dielo ruského obdobia, v ktorom zaznieva odkaz aktuálny aj dnes. Príbehy inšpirované rukou Williama Shakespeara Rómeo + Júlia či Richard III alebo aj tanečné divadlo Carmen, ktoré je zvukovo-vizuálnym zážitkom vďaka spojeniu tanca a orchestra priamo na pódiu.",
+        "Tiež sa medzi našimi hrami nachádzajú opera a balet Labuťko inšpirované zákulisím baletu Labutie jazero, Bolero – príbeh matky či špeciálny projekt Strom. Súbor SDT môžeš vidieť v hudobno-tanečnej feérii Cigáni idú do neba."
+      ],
+      "en": [
+        "Our productions include the ballet Petrushka/The Firebird, a high point of the Russian period whose message still rings true today; stories shaped by the hand of William Shakespeare — Romeo + Juliet and Richard III; and the dance theatre Carmen, an audiovisual experience that brings dance and orchestra together on one stage.",
+        "The repertoire also includes the opera-ballet Labuťko, inspired by the backstage world of Swan Lake, Bolero – A Mother's Story and the special project Strom (The Tree). You can also see the SDT company in the music and dance féerie Cigáni idú do neba."
+      ]
+    },
+    "latest": {
+      "sk": "Medzi najnovšie počiny patrí moderný balet AMADEUS, inšpirovaný príbehom geniálneho hudobného skladateľa Wolfganga Amadea Mozarta, či moderný balet Zvonár u Matky Božej, ktorý mal premiéru v marci 2025.",
+      "en": "Our most recent work includes the modern ballet AMADEUS, inspired by the story of the brilliant composer Wolfgang Amadeus Mozart, and the modern ballet The Hunchback of Notre Dame, which premiered in March 2025."
+    },
+    "latestLinks": [
+      "amadeus",
+      "the-hunchback-of-notre-dame"
+    ],
+    "photos": [
+      {
+        "src": "/assets/about/ensemble.webp",
+        "w": 800,
+        "h": 600,
+        "alt": {
+          "sk": "Súbor v bielych kostýmoch",
+          "en": "The company in white costumes"
+        }
+      },
+      {
+        "src": "/assets/about/kneel.webp",
+        "w": 1200,
+        "h": 800,
+        "alt": {
+          "sk": "Tanečník kľačí v červenom svetle",
+          "en": "A dancer kneeling in red light"
+        }
+      },
+      {
+        "src": "/assets/about/roar.webp",
+        "w": 1200,
+        "h": 1097,
+        "alt": {
+          "sk": "Tanečníčka v širokom postoji",
+          "en": "A dancer in a wide stance"
+        }
+      },
+      {
+        "src": "/assets/about/solo-blue.webp",
+        "w": 800,
+        "h": 600,
+        "alt": {
+          "sk": "Sólistka v modrom svetle",
+          "en": "A soloist in blue light"
+        }
+      },
+      {
+        "src": "/assets/about/leap.webp",
+        "w": 800,
+        "h": 518,
+        "alt": {
+          "sk": "Tanečník vo výskoku",
+          "en": "A dancer mid-leap"
+        }
+      },
+      {
+        "src": "/assets/about/white.webp",
+        "w": 800,
+        "h": 812,
+        "alt": {
+          "sk": "Tanečníčka v bielom",
+          "en": "A dancer in white"
+        }
+      }
+    ]
+  },
+  "bts": {
+    "vimeo": "980464378",
+    "poster": "/assets/photos/amadeus-wide.webp",
+    "duration": "2:58",
+    "label": {
+      "sk": "Zo zákulisia",
+      "en": "Behind the scenes"
+    },
+    "heading": {
+      "sk": "Ako vzniká <em>Amadeus</em>",
+      "en": "The making of <em>Amadeus</em>"
+    },
+    "body": {
+      "sk": "Skúšky, kostýmy a chvíle pred prvým potleskom — tri minúty z prípravy moderného baletu AMADEUS.",
+      "en": "Rehearsals, costumes and the moments before the first applause — three minutes from the making of the modern ballet AMADEUS."
+    },
+    "marquee": {
+      "sk": "ZO ZÁKULISIA",
+      "en": "BEHIND THE SCENES"
+    }
+  }
 }
